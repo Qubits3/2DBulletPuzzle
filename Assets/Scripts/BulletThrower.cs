@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletThrower : MonoBehaviour
@@ -8,11 +6,12 @@ public class BulletThrower : MonoBehaviour
     public Transform bulletTransform;
     public Transform gun;
 
-    public void CreateBullet()
+    private void CreateBullet()
     {
         Instantiate(bullet, bulletTransform.position, gun.rotation);
     }
-    void OnMouseDown()
+
+    private void OnMouseDown()
     {
         CreateBullet();
     }
