@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    private GameObject gun;
-    private void Awake()
-    {
-        gun = GameObject.Find("Gun");
-    }
+    [SerializeField]private float bulletSpeed = 5.0f;
     void Update()
     {
-        transform.position = gun.transform.up * 5;
+        transform.position += transform.up * Time.deltaTime * bulletSpeed;
     }
 }

@@ -6,12 +6,13 @@ public class BulletThrower : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletTransform;
+    public Transform gun;
 
     public void CreateBullet()
     {
-        Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+        Instantiate(bullet, bulletTransform.position, gun.rotation);
     }
-    private void OnMouseDown()
+    void OnMouseDown()
     {
         CreateBullet();
     }
