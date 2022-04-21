@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2764700669079803002}
   - component: {fileID: -7217481833064128553}
   - component: {fileID: -6854185580397477850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,3 +136,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 1000
+  bounceCount: 5

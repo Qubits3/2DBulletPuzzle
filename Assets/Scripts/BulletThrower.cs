@@ -1,18 +1,27 @@
+using System;
 using UnityEngine;
 
 public class BulletThrower : MonoBehaviour
 {
-    public GameObject bullet;
-    public Transform bulletTransform;
-    public Transform gun;
+    private Transform _bulletTransform;
+    private Transform _gun;
 
-    private void CreateBullet()
+    private void Awake()
     {
-        Instantiate(bullet, bulletTransform.position, gun.rotation);
+        _bulletTransform = GameObject.Find("BulletSpawnPosition").transform;
+        _gun = GameObject.Find("Gun").transform;
     }
 
     private void OnMouseDown()
     {
         CreateBullet();
+    }
+    
+    private void CreateBullet()
+    {
+        var bullet = ObjectPooler.SharedInstance.GetPooledObject();
+        bullet.transform.position = _bulletTransform.position;
+        bullet.transform.rotation = _gun.rotation;
+        bullet.SetActive(true);
     }
 }
