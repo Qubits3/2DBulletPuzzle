@@ -1,8 +1,11 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Editor
 {
+#if UNITY_EDITOR
     public class CustomTool : EditorWindow
     {
         [MenuItem("Window/Custom Tool")]
@@ -19,9 +22,16 @@ namespace Editor
             {
                 SpawnPrefab("Prefabs/Player");
                 SpawnPrefab("Prefabs/Managers");
-                SpawnPrefab("Prefabs/Enemy").transform.position = new Vector2(0,1);
                 
+                var enemy = SpawnPrefab("Prefabs/Enemy");
+                if (enemy != null) enemy.transform.position = new Vector2(0, 1);
+
                 SpawnObject("Prefabs/Grid", "Grid");
+            }
+
+            if (GUILayout.Button("Blue Background"))
+            {
+                SpawnPrefab("Prefabs/Backgrounds/BlueBackground").transform.parent = GameObject.Find("Grid").gameObject.transform;
             }
         }
 
@@ -38,7 +48,7 @@ namespace Editor
             return null;
         }
 
-        private GameObject SpawnObject(string path, string objectName = "")
+        private void SpawnObject(string path, string objectName = "")
         {
             if (!GameObject.Find(Resources.Load(path).name))
             {
@@ -50,11 +60,8 @@ namespace Editor
                 }
 
                 EditorUtility.SetDirty(gameObject);
-
-                return gameObject;
             }
-
-            return null;
         }
     }
+#endif
 }
