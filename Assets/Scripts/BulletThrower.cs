@@ -5,6 +5,10 @@ public class BulletThrower : MonoBehaviour
 {
     private Transform _bulletTransform;
     private Transform _gun;
+    
+    public delegate void BulletAction();
+
+    public BulletAction OnCreateBullet;
 
     private void Awake()
     {
@@ -23,5 +27,7 @@ public class BulletThrower : MonoBehaviour
         bullet.transform.position = _bulletTransform.position;
         bullet.transform.rotation = _gun.rotation;
         bullet.SetActive(true);
+        
+        OnCreateBullet?.Invoke();
     }
 }
