@@ -16,11 +16,10 @@ public class BulletThrower : MonoBehaviour
         _gun = GameObject.Find("Gun").transform;
     }
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
         CreateBullet();
     }
-    
     private void CreateBullet()
     {
         var bullet = ObjectPooler.SharedInstance.GetPooledObject();

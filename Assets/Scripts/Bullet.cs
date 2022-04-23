@@ -34,14 +34,6 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Enemy"))
-        {
-            Destroy(col.gameObject);
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Enemy")) return;
