@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLife : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public delegate void OnDestroyAction();
     public static event OnDestroyAction OnEnemyDestroy;
@@ -13,6 +11,7 @@ public class EnemyLife : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            
             OnEnemyDestroy?.Invoke();
         }
     }
