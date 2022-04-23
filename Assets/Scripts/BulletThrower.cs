@@ -4,6 +4,10 @@ using UnityEngine;
 public class BulletThrower : MonoBehaviour
 {
     private Transform _bulletTransform;
+    
+    public delegate void BulletAction();
+
+    public event BulletAction OnCreateBullet;
 
     private void Awake()
     {
@@ -20,5 +24,7 @@ public class BulletThrower : MonoBehaviour
         bullet.transform.position = _bulletTransform.position;
         bullet.transform.rotation = _bulletTransform.rotation;
         bullet.SetActive(true);
+        
+        OnCreateBullet?.Invoke();
     }
 }
