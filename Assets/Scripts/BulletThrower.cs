@@ -8,15 +8,21 @@ public class BulletThrower : MonoBehaviour
     public delegate void BulletAction();
 
     public event BulletAction OnCreateBullet;
+    
+    private GameManager _gameManager;
 
     private void Awake()
     {
         _bulletTransform = GameObject.Find("BulletSpawnPosition").transform;
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnMouseUp()
     {
-        CreateBullet();
+        if (!_gameManager.IsLevelCompleted)
+        {
+            CreateBullet();
+        }
     }
     private void CreateBullet()
     {
