@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     private int _bounceCount;
     [SerializeField] private int bounceCount = 5;
 
+    private Vector3 _velocity;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -21,7 +23,8 @@ public class Bullet : MonoBehaviour
 
     private void MoveBullet()
     {
-        _rigidbody2D.AddRelativeForce(Vector2.up * bulletSpeed);
+        _velocity = Vector2.up * bulletSpeed;
+        _rigidbody2D.AddRelativeForce(_velocity);
     }
 
     private void OnCollisionEnter2D(Collision2D col)

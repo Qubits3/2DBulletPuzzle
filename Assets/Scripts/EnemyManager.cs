@@ -1,27 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
-    private GameObject[] enemy;
-    private int numberOfEnemies;
+    private GameObject[] _enemy;
+    private int _numberOfEnemies;
+
     private void Awake()
     {
-        enemy = GameObject.FindGameObjectsWithTag("Enemy");
-        EnemyLife.OnEnemyDestroy += EnemyDead;
+        _enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        Enemy.OnEnemyDestroy += OnEnemyDead;
     }
+
     private void Start()
     {
-        numberOfEnemies = enemy.Length;
+        _numberOfEnemies = _enemy.Length;
     }
-    void EnemyDead()
+
+    private void OnEnemyDead()
     {
-        numberOfEnemies--;
-        if(numberOfEnemies == 0)
+        _numberOfEnemies--;
+        if (_numberOfEnemies == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            LevelManager.Instance.NextScene();
         }
     }
 }
