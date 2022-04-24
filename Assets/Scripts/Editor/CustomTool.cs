@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Editor
 {
@@ -16,6 +18,21 @@ namespace Editor
 
         private void OnGUI()
         {
+            SingleScene();
+
+            MultipleScene();
+        }
+
+        private void SingleScene()
+        {
+            if (SceneManager.sceneCount > 1)
+            {
+                GUILayout.Label("To see single tools open one scene", EditorStyles.boldLabel);
+                return;
+            }
+
+            CenteredLabel("SINGLE SCENE TOOLS");
+
             if (GUILayout.Button("Spawn Essentials"))
             {
                 if (!GameObject.FindWithTag("Player"))
@@ -52,6 +69,30 @@ namespace Editor
                 BackgroundButton("Yellow");
             }
             EditorGUILayout.EndHorizontal();
+        }
+
+        private void MultipleScene()
+        {
+            // CenteredLabel("MULTIPLE SCENE TOOLS");
+            //
+            // if (GUILayout.Button("Fix All Background Positions"))
+            // {
+            //     foreach (var background in GameObject.FindGameObjectsWithTag("Background"))
+            //     {
+            //         background.transform.position = new Vector3(0, 0, -1);
+            //         EditorUtility.SetDirty(background);
+            //         Debug.Log($"Fixed position of {background.name}");
+            //     }
+            // }
+        }
+
+        private void CenteredLabel(string text)
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.Label(text, EditorStyles.boldLabel);
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
         }
 
         private void SpawnEssentials()

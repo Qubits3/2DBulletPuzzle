@@ -5,8 +5,7 @@ using UnityEngine;
 public class ArmRotator : MonoBehaviour
 {
     private GameManager _gameManager;
-
-    public int reflections;
+    
     public float maxLength;
     private LineRenderer _lineRenderer;
     private Ray2D _ray;
@@ -23,6 +22,11 @@ public class ArmRotator : MonoBehaviour
 
     private void Update()
     {
+        DrawBulletPrediction();
+    }
+
+    private void DrawBulletPrediction()
+    {
         _ray = new Ray2D(transform.position, transform.right);
 
         _lineRenderer.positionCount = 1;
@@ -30,22 +34,17 @@ public class ArmRotator : MonoBehaviour
 
         float remainingLength = maxLength;
 
-        for (int i = 0; i < reflections; i++)
+        _hit = Physics2D.Raycast(_ray.origin, _ray.direction, remainingLength, layerMask);
+        if (_hit.collider)
         {
-            _hit = Physics2D.Raycast(_ray.origin, _ray.direction, remainingLength, layerMask);
-            if (_hit.collider)
-            {
-                _lineRenderer.positionCount += 1;
-                _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _hit.point);
-                remainingLength -= Vector3.Distance(_ray.origin, _hit.point);
-                _ray = new Ray2D(_hit.point - _ray.direction * 0.01f, Vector3.Reflect(_ray.direction, _hit.normal));
-            }
-            else
-            {
-                _lineRenderer.positionCount += 1;
-                _lineRenderer.SetPosition(_lineRenderer.positionCount - 1,
-                    _ray.origin + _ray.direction * remainingLength);
-            }
+            _lineRenderer.positionCount += 1;
+            _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _hit.point);
+        }
+        else
+        {
+            _lineRenderer.positionCount += 1;
+            _lineRenderer.SetPosition(_lineRenderer.positionCount - 1,
+                _ray.origin + _ray.direction * remainingLength);
         }
     }
 
