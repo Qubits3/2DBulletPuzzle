@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
 
     private Vector3 _velocity;
 
+    Vector2 pre_vel;
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -26,10 +27,16 @@ public class Bullet : MonoBehaviour
         _velocity = Vector2.up * bulletSpeed;
         _rigidbody2D.AddRelativeForce(_velocity);
     }
-
+    private void Update()
+    {
+        pre_vel = _rigidbody2D.velocity;
+    }
     private void OnCollisionEnter2D(Collision2D col)
     {
         _bounceCount--;
+        var speed = pre_vel.magnitude;
+        var direction = Vector3.Reflect(pre_vel.normalized, col.contacts[0].normal);
+        _rigidbody2D.velocity = direction * Mathf.Max(speed, 3f);
 
         if (_bounceCount == 0)
         {
