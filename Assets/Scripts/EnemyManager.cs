@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    private GameManager _gameManager;
+    
     private GameObject[] _enemy;
     private int _numberOfEnemies;
 
     private void Awake()
     {
         _enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        _gameManager = FindObjectOfType<GameManager>();
+
         Enemy.OnEnemyDestroy += OnEnemyDead;
     }
 
@@ -21,7 +25,7 @@ public class EnemyManager : MonoBehaviour
         _numberOfEnemies--;
         if (_numberOfEnemies == 0)
         {
-            LevelManager.Instance.NextScene();
+            _gameManager.CompleteLevel();
         }
     }
 }

@@ -1,8 +1,24 @@
+using System;
 using UnityEngine;
 
-public class Pivot : MonoBehaviour
+public class ArmRotator : MonoBehaviour
 {
+    private GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
+
     private void FixedUpdate()
+    {
+        if (!_gameManager.IsLevelCompleted)
+        {
+            RotateArm();
+        }
+    }
+
+    private void RotateArm()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
