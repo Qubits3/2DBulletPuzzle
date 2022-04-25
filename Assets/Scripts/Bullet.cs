@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         DrawBulletPrediction();
     }

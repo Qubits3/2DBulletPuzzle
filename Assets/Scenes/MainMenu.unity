@@ -294,6 +294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 458205549, guid: 60c6f83655a2ae84083d8bfe5682025d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 761354934}
     - target: {fileID: 6100266523492361704, guid: 60c6f83655a2ae84083d8bfe5682025d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -409,10 +413,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6100266524989680213, guid: 60c6f83655a2ae84083d8bfe5682025d,
+        type: 3}
+      propertyPath: m_Name
+      value: StartNewButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100266524989680213, guid: 60c6f83655a2ae84083d8bfe5682025d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100266524989680215, guid: 60c6f83655a2ae84083d8bfe5682025d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100266524989680215, guid: 60c6f83655a2ae84083d8bfe5682025d,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6100266524989680215, guid: 60c6f83655a2ae84083d8bfe5682025d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 761354934}
+    - target: {fileID: 6100266524989680215, guid: 60c6f83655a2ae84083d8bfe5682025d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartNewLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c6f83655a2ae84083d8bfe5682025d, type: 3}
