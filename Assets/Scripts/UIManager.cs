@@ -30,8 +30,6 @@ public class UIManager : MonoBehaviour
             _nextLevelButton.onClick.AddListener(LevelManager.Instance.LoadNextLevel);
         }
 
-        print(GameManager.SharedInstance.LastFinishedLevel);
-        
         if (IsThisSceneMainMenu() && GameManager.SharedInstance.LastFinishedLevel != 0)
         {
             _continueButton.interactable = true;
