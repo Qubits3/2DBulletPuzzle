@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
     private GameObject _inGameUI;
     private Button _nextLevelButton;
     private Button _continueButton;
+    private GameObject _bulletPanel;
+    
+    private BulletThrower _bulletThrower;
 
     private void Awake()
     {
@@ -20,6 +23,10 @@ public class UIManager : MonoBehaviour
             _inGameUI = GameObject.Find("InGameUI");
             _nextLevelPanel = FindObject(_inGameUI, "NextLevelPanel");
             _nextLevelButton = FindObject(_inGameUI, "NextLevelButton").GetComponent<Button>();
+            _bulletPanel = GameObject.Find("BulletPanel");
+            
+            _bulletThrower = FindObjectOfType<BulletThrower>();
+            _bulletThrower.OnCreateBullet += DrawBulletOnUI;
         }
     }
 
@@ -34,6 +41,11 @@ public class UIManager : MonoBehaviour
         {
             _continueButton.interactable = true;
         }
+    }
+    
+    private void DrawBulletOnUI()
+    {
+        Destroy(_bulletPanel.GetComponentInChildren<Image>().gameObject);
     }
 
     public void EnablePanel()
@@ -71,5 +83,10 @@ public class UIManager : MonoBehaviour
     private bool IsThisSceneMainMenu()
     {
         return SceneManager.GetActiveScene().buildIndex == 0;
+    }
+    
+    private void OnDestroy()
+    {
+        _bulletThrower.OnCreateBullet -= DrawBulletOnUI;
     }
 }

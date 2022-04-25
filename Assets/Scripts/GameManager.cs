@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public bool IsLevelCompleted { get; private set; }
     public int LastFinishedLevel { get; private set; }
     private UIManager _uiManager;
+    private BulletThrower _bulletThrower;
+
+    public int BulletCount { get; private set; } = 5;
 
     private void Awake()
     {
@@ -17,6 +20,9 @@ public class GameManager : MonoBehaviour
         LoadData();
 
         _uiManager = FindObjectOfType<UIManager>();
+        _bulletThrower = FindObjectOfType<BulletThrower>();
+
+        _bulletThrower.OnCreateBullet += OnShot;
     }
 
     public void CompleteLevel()
@@ -25,6 +31,11 @@ public class GameManager : MonoBehaviour
         _uiManager.EnablePanel();
 
         SaveData();
+    }
+
+    private void OnShot()
+    {
+        BulletCount--;
     }
 
     [Serializable]
@@ -70,5 +81,10 @@ public class GameManager : MonoBehaviour
 
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+    }
+
+    private void OnDestroy()
+    {
+        _bulletThrower.OnCreateBullet -= OnShot;
     }
 }
