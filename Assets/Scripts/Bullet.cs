@@ -27,6 +27,11 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        DrawBulletPrediction();
+    }
+
+    private void DrawBulletPrediction()
+    {
         _ray = new Ray2D(transform.position, transform.up);
 
         _lineRenderer.positionCount = 1;
