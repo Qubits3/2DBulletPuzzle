@@ -3,6 +3,7 @@ using UnityEngine;
 public class BulletThrower : MonoBehaviour
 {
     private Transform _bulletTransform;
+    private GameManager _gameManager;
 
     public delegate void BulletAction();
 
@@ -11,11 +12,12 @@ public class BulletThrower : MonoBehaviour
     private void Awake()
     {
         _bulletTransform = GameObject.Find("BulletSpawnPosition").transform;
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnMouseUp()
     {
-        if (!GameManager.SharedInstance.IsLevelCompleted && GameManager.SharedInstance.BulletCount > 0)
+        if (_gameManager.CanShoot())
         {
             CreateBullet();
         }

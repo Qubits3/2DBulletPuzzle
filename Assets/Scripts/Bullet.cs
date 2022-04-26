@@ -1,23 +1,21 @@
-using System;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(Rigidbody2D), typeof(LineRenderer))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 5.0f;
+    [SerializeField] private float bulletSpeed = 1000.0f;
     private Rigidbody2D _rigidbody2D;
 
     private int _bounceCount;
-    [SerializeField] private int bounceCount = 5;
+    private const int BounceCount = 5;
 
     private Vector3 _velocity;
-    
+
     public float maxLength;
     private LineRenderer _lineRenderer;
     private Ray2D _ray;
     private RaycastHit2D _hit;
     private Vector3 _direction;
-    [SerializeField] private LayerMask layerMask;
 
     private void Awake()
     {
@@ -32,27 +30,33 @@ public class Bullet : MonoBehaviour
 
     private void DrawBulletPrediction()
     {
-        _ray = new Ray2D(transform.position, transform.up);
+        var transform1 = transform;
+        var position = transform1.position;
+        _ray = new Ray2D(position, transform1.up);
 
         _lineRenderer.positionCount = 1;
-        _lineRenderer.SetPosition(0, transform.position);
+        _lineRenderer.SetPosition(0, position);
 
         float remainingLength = maxLength;
 
         for (int i = 0; i < 2; i++)
         {
-            _hit = Physics2D.Raycast(_ray.origin, _ray.direction, remainingLength, layerMask);
+            _hit = Physics2D.Raycast(_ray.origin, _ray.direction, remainingLength, LayerMask.GetMask("Terrain", "Enemy"));
             if (_hit.collider)
             {
-                _lineRenderer.positionCount += 1;
-                _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _hit.point);
+                var positionCount = _lineRenderer.positionCount;
+                positionCount += 1;
+                _lineRenderer.positionCount = positionCount;
+                _lineRenderer.SetPosition(positionCount - 1, _hit.point);
                 remainingLength -= Vector3.Distance(_ray.origin, _hit.point);
                 _ray = new Ray2D(_hit.point - _ray.direction * 0.01f, Vector2.Reflect(_ray.direction, _hit.normal));
             }
             else
             {
-                _lineRenderer.positionCount += 1;
-                _lineRenderer.SetPosition(_lineRenderer.positionCount - 1,
+                var positionCount = _lineRenderer.positionCount;
+                positionCount += 1;
+                _lineRenderer.positionCount = positionCount;
+                _lineRenderer.SetPosition(positionCount - 1,
                     _ray.origin + _ray.direction * remainingLength);
             }
         }
@@ -60,7 +64,7 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        _bounceCount = bounceCount + 1;
+        _bounceCount = BounceCount + 1;
         MoveBullet();
     }
 
@@ -80,7 +84,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         ReflectBullet();
-        
+
         _bounceCount--;
 
         if (_bounceCount == 0)

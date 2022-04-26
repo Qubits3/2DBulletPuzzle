@@ -5,18 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager SharedInstance { get; private set; }
-    public bool IsLevelCompleted { get; private set; }
     public int LastFinishedLevel { get; private set; }
+    
+    private bool _isLevelCompleted;
     private UIManager _uiManager;
     private BulletThrower _bulletThrower;
 
-    public int BulletCount { get; private set; } = 5;
+    private int _bulletCount = 5;
 
     private void Awake()
     {
-        SharedInstance = this;
-
         LoadData();
 
         _uiManager = FindObjectOfType<UIManager>();
@@ -27,15 +25,30 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        IsLevelCompleted = true;
+        _isLevelCompleted = true;
         _uiManager.EnablePanel();
 
         SaveData();
     }
 
+    public bool CanShoot()
+    {
+        return !_isLevelCompleted && IsThereEnoughBulletLeft();
+    }
+    
+    private bool IsThereEnoughBulletLeft()
+    {
+        return _bulletCount > 0;
+    }
+
     private void OnShot()
     {
-        BulletCount--;
+        _bulletCount--;
+    }
+
+    private void OnDestroy()
+    {
+        _bulletThrower.OnCreateBullet -= OnShot;
     }
 
     [Serializable]
@@ -81,10 +94,5 @@ public class GameManager : MonoBehaviour
 
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
-    }
-
-    private void OnDestroy()
-    {
-        _bulletThrower.OnCreateBullet -= OnShot;
     }
 }

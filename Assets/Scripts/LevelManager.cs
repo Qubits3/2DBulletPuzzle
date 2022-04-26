@@ -4,10 +4,13 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    
+    private GameManager _gameManager;
+
     private void Awake()
     {
         Instance = this;
+        
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     public void RestartLevel()
@@ -22,12 +25,12 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLastRemainingLevel()
     {
-        SceneManager.LoadScene(GameManager.SharedInstance.LastFinishedLevel + 1);
+        SceneManager.LoadScene(_gameManager.LastFinishedLevel + 1);
     }
 
     public void StartNewLevel()
     {
-        GameManager.SharedInstance.ResetData();
+        _gameManager.ResetData();
         
         LoadNextLevel();
     }

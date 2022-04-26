@@ -11,9 +11,12 @@ public class UIManager : MonoBehaviour
     private GameObject _bulletPanel;
     
     private BulletThrower _bulletThrower;
+    private GameManager _gameManager;
 
     private void Awake()
     {
+        _gameManager = FindObjectOfType<GameManager>();
+        
         if (IsThisSceneMainMenu())
         {
             _continueButton = GameObject.Find("ContinueButton").GetComponent<Button>();
@@ -37,7 +40,7 @@ public class UIManager : MonoBehaviour
             _nextLevelButton.onClick.AddListener(LevelManager.Instance.LoadNextLevel);
         }
 
-        if (IsThisSceneMainMenu() && GameManager.SharedInstance.LastFinishedLevel != 0)
+        if (IsThisSceneMainMenu() && _gameManager.LastFinishedLevel != 0)
         {
             _continueButton.interactable = true;
         }
@@ -53,12 +56,12 @@ public class UIManager : MonoBehaviour
         _nextLevelPanel.SetActive(true);
     }
 
-    private GameObject FindObject(GameObject parent, string _name)
+    private GameObject FindObject(GameObject parent, string objectName)
     {
         Transform[] trs = parent.GetComponentsInChildren<Transform>(true);
         foreach (Transform t in trs)
         {
-            if (t.name == _name)
+            if (t.name == objectName)
             {
                 return t.gameObject;
             }
