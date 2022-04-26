@@ -26,9 +26,14 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel()
     {
         _isLevelCompleted = true;
-        _uiManager.EnablePanel();
+        _uiManager.EnableNextLevelPanel();
 
         SaveData();
+    }
+
+    private void OnOutOfAmmo()
+    {
+        _uiManager.EnableRestartLevelPanel();
     }
 
     public bool CanShoot()
@@ -44,6 +49,11 @@ public class GameManager : MonoBehaviour
     private void OnShot()
     {
         _bulletCount--;
+
+        if (_bulletCount == 0)
+        {
+            OnOutOfAmmo();
+        }
     }
 
     private void OnDestroy()
