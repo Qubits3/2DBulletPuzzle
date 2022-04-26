@@ -17,10 +17,14 @@ public class Bullet : MonoBehaviour
     private RaycastHit2D _hit;
     private Vector3 _direction;
 
+    private IBulletManager _iBulletManager;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _lineRenderer = GetComponent<LineRenderer>();
+
+        _iBulletManager = FindObjectOfType<GameManager>();
     }
 
     private void FixedUpdate()
@@ -104,5 +108,7 @@ public class Bullet : MonoBehaviour
     {
         _rigidbody2D.velocity = Vector3.zero;
         gameObject.SetActive(false);
+
+        _iBulletManager.OnBulletDestroy();
     }
 }

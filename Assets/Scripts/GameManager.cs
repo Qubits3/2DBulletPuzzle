@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IBulletManager
 {
     public int LastFinishedLevel { get; private set; }
     
@@ -35,6 +35,14 @@ public class GameManager : MonoBehaviour
     {
         _uiManager.EnableRestartLevelPanel();
     }
+    
+    public void OnBulletDestroy()
+    {
+        if (_bulletCount == 0)
+        {
+            OnOutOfAmmo();
+        }
+    }
 
     public bool CanShoot()
     {
@@ -49,11 +57,6 @@ public class GameManager : MonoBehaviour
     private void OnShot()
     {
         _bulletCount--;
-
-        if (_bulletCount == 0)
-        {
-            OnOutOfAmmo();
-        }
     }
 
     private void OnDestroy()
