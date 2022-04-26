@@ -92,19 +92,6 @@ public class UIManager : MonoBehaviour
         return null;
     }
 
-    private GameObject GetChild(string childName)
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.gameObject.name.Equals(childName))
-            {
-                return child.gameObject;
-            }
-        }
-
-        return null;
-    }
-
     private bool IsThisSceneMainMenu()
     {
         return SceneManager.GetActiveScene().buildIndex == 0;

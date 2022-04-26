@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour, IBulletManager
     
     public void OnBulletDestroy()
     {
-        if (_bulletCount == 0)
+        if (!_isLevelCompleted && _bulletCount == 0)
         {
             OnOutOfAmmo();
         }
