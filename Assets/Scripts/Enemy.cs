@@ -7,12 +7,16 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bullet"))
-        {
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        if (!collision.CompareTag("Bullet")) return;
+        
+        DestroyEnemy();
             
-            OnEnemyDestroy?.Invoke();
-        }
+        OnEnemyDestroy?.Invoke();
+    }
+
+    private void DestroyEnemy()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
     }
 }

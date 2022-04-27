@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameObject _crosshair;
+    private Camera _camera;
+    private GameManager _gameManager;
+
+    private void Awake()
     {
-        
+        _camera = Camera.main;
+        _crosshair = GameObject.FindWithTag("Crosshair");
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        DrawCrosshair();
+    }
+
+    private void DrawCrosshair()
+    {
+        if (_gameManager.CanShoot())
+        {
+            _crosshair.transform.position = _camera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+        }
     }
 }

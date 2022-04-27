@@ -1,15 +1,13 @@
-using System;
 using UnityEngine;
 
 public class BulletThrower : MonoBehaviour
 {
     private Transform _bulletTransform;
-    
+    private GameManager _gameManager;
+
     public delegate void BulletAction();
 
     public event BulletAction OnCreateBullet;
-    
-    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -19,18 +17,19 @@ public class BulletThrower : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!_gameManager.IsLevelCompleted)
+        if (_gameManager.CanShoot())
         {
             CreateBullet();
         }
     }
+
     private void CreateBullet()
     {
         var bullet = ObjectPooler.SharedInstance.GetPooledObject();
         bullet.transform.position = _bulletTransform.position;
         bullet.transform.rotation = _bulletTransform.rotation;
         bullet.SetActive(true);
-        
+
         OnCreateBullet?.Invoke();
     }
 }
