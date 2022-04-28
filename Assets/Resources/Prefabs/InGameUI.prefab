@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 225054600}
   - component: {fileID: 225054601}
   m_Layer: 5
-  m_Name: AwardPanel
+  m_Name: MedalPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 1080684977}
   - component: {fileID: 1080684976}
   m_Layer: 0
-  m_Name: Bronze
+  m_Name: BronzeMedal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 1769603337}
   - component: {fileID: 1769603336}
   m_Layer: 0
-  m_Name: Silver
+  m_Name: SilverMedal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 1883530113}
   - component: {fileID: 1883530112}
   m_Layer: 0
-  m_Name: Gold
+  m_Name: GoldMedal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

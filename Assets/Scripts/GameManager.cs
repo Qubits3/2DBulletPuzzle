@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour, IBulletManager
         _bulletCount--;
     }
 
+    public int GetBulletCount()
+    {
+        return _bulletCount;
+    }
+
     private void OnDestroy()
     {
         _bulletThrower.OnCreateBullet -= OnShot;

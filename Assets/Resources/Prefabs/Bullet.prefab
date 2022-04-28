@@ -137,11 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 1000
-  bounceCount: 5
   maxLength: 50
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 192
 --- !u!120 &2501965283380891134
 LineRenderer:
   m_ObjectHideFlags: 0
