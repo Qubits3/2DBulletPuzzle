@@ -21,9 +21,11 @@ namespace Core
             LoadData();
 
             _uiManager = FindObjectOfType<UIManager>();
-            _bulletThrower = FindObjectOfType<BulletThrower>();
-
-            _bulletThrower.OnCreateBullet += OnShot;
+            if (!Utils.IsThisSceneMainMenu())
+            {
+                _bulletThrower = FindObjectOfType<BulletThrower>();
+                _bulletThrower.OnCreateBullet += OnShot;
+            }
         }
 
         public void CompleteLevel()
@@ -69,7 +71,10 @@ namespace Core
 
         private void OnDestroy()
         {
-            _bulletThrower.OnCreateBullet -= OnShot;
+            if (!Utils.IsThisSceneMainMenu())
+            {
+                _bulletThrower.OnCreateBullet -= OnShot;
+            }
         }
 
         [Serializable]

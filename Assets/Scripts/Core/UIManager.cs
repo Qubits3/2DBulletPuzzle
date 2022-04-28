@@ -25,7 +25,7 @@ namespace Core
         {
             _gameManager = FindObjectOfType<GameManager>();
 
-            if (IsThisSceneMainMenu())
+            if (Utils.IsThisSceneMainMenu())
             {
                 _continueButton = GameObject.Find("ContinueButton").GetComponent<Button>();
             }
@@ -48,7 +48,7 @@ namespace Core
 
         private void Start()
         {
-            if (IsThisSceneMainMenu() && _gameManager.LastFinishedLevel != 0)
+            if (Utils.IsThisSceneMainMenu() && _gameManager.LastFinishedLevel != 0)
             {
                 _continueButton.interactable = true;
             }
@@ -112,14 +112,12 @@ namespace Core
             return null;
         }
 
-        private bool IsThisSceneMainMenu()
-        {
-            return SceneManager.GetActiveScene().buildIndex == 0;
-        }
-
         private void OnDestroy()
         {
-            _bulletThrower.OnCreateBullet -= DrawBulletOnUI;
+            if (!Utils.IsThisSceneMainMenu())
+            {
+                _bulletThrower.OnCreateBullet -= DrawBulletOnUI;
+            }
         }
     }
 }

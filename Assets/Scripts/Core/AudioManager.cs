@@ -17,8 +17,11 @@ namespace Core
 
             _shotSound = Resources.Load<AudioClip>("Audio/ShotSound");
 
-            _bulletThrower = FindObjectOfType<BulletThrower>();
-            _bulletThrower.OnCreateBullet += PlayShotSound;
+            if (!Utils.IsThisSceneMainMenu())
+            {
+                _bulletThrower = FindObjectOfType<BulletThrower>();
+                _bulletThrower.OnCreateBullet += PlayShotSound;
+            }
         }
 
         private void PlayShotSound()
@@ -29,7 +32,10 @@ namespace Core
 
         private void OnDestroy()
         {
-            _bulletThrower.OnCreateBullet -= PlayShotSound;
+            if (!Utils.IsThisSceneMainMenu())
+            {
+                _bulletThrower.OnCreateBullet -= PlayShotSound;
+            }
         }
     }
 }
