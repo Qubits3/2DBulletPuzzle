@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 458205551}
   - component: {fileID: 458205550}
   - component: {fileID: 458205549}
+  - component: {fileID: 6100266524078985844}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -120,19 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 458205550}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadLastRemainingLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &6100266524078985844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458205547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1f499e437f4ce6bd794b9bc01392ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493927005
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +370,7 @@ GameObject:
   - component: {fileID: 6100266523492361706}
   - component: {fileID: 6100266523492361705}
   - component: {fileID: 6100266523492361704}
+  - component: {fileID: 6100266524078985842}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -477,19 +479,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6100266523492361705}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &6100266524078985842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100266523492361702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61adb7da3a8459fa6867bc8d1325a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6100266523946691666
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +687,7 @@ GameObject:
   - component: {fileID: 6100266524989680217}
   - component: {fileID: 6100266524989680216}
   - component: {fileID: 6100266524989680215}
+  - component: {fileID: 6100266524078985846}
   m_Layer: 5
   m_Name: StartNewButton
   m_TagString: Untagged
@@ -793,19 +796,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6100266524989680216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: StartNewLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &6100266524078985846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100266524989680213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c05e9f95da43bba8567e96b9d77048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8531822121615650885
 GameObject:
   m_ObjectHideFlags: 0
