@@ -45,7 +45,8 @@ public class Bullet : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            _hit = Physics2D.Raycast(_ray.origin, _ray.direction, remainingLength, LayerMask.GetMask("Terrain", "Enemy"));
+            _hit = Physics2D.Raycast(_ray.origin, _ray.direction, remainingLength,
+                LayerMask.GetMask("Terrain", "Enemy", "Obstacle"));
             if (_hit.collider)
             {
                 var positionCount = _lineRenderer.positionCount;

@@ -3,15 +3,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public delegate void OnDestroyAction();
+
     public static event OnDestroyAction OnEnemyDestroy;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Bullet")) return;
-        
-        DestroyEnemy();
-            
-        OnEnemyDestroy?.Invoke();
+        if (collision.CompareTag("Bullet") || collision.CompareTag("Obstacle"))
+        {
+            DestroyEnemy();
+
+            OnEnemyDestroy?.Invoke();
+        }
     }
 
     private void DestroyEnemy()
