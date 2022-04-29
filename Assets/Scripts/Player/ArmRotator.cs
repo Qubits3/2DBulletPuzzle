@@ -14,12 +14,14 @@ namespace Player
         private RaycastHit2D _hit;
         private Vector3 _direction;
         private Camera _camera;
+        private GameObject _bulletSpawnPos;
 
         private void Awake()
         {
             _gameManager = FindObjectOfType<GameManager>();
 
             _lineRenderer = GetComponent<LineRenderer>();
+            _bulletSpawnPos = GameObject.Find("BulletSpawnPosition");
         
             _camera = Camera.main;
         }
@@ -36,10 +38,10 @@ namespace Player
 
         private void DrawBulletPrediction()
         {
-            var transform1 = transform;
+            var transform1 = _bulletSpawnPos.transform;
             var position = transform1.position;
         
-            _ray = new Ray2D(position, transform1.right);
+            _ray = new Ray2D(position, transform1.up);
 
             _lineRenderer.positionCount = 1;
             _lineRenderer.SetPosition(0, position);
