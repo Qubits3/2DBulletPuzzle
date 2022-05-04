@@ -10,7 +10,7 @@ namespace Core
             return SceneManager.GetActiveScene().buildIndex == 0;
         }
 
-        public static object Print(this object anObject, string message)
+        public static object Print(this object anObject, string message = "")
         {
             Debug.Log($"{message}: {anObject}");
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using Bullet;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Core
@@ -15,7 +14,7 @@ namespace Core
         private GameObject _restartLevelPanel;
         private GameObject _inGameUI;
         private readonly GameObject[] _medals = new GameObject[Enum.GetNames(typeof(Medal)).Length];
-    
+
         private Button _continueButton;
 
         private BulletThrower _bulletThrower;
@@ -32,8 +31,7 @@ namespace Core
             else
             {
                 _inGameUI = GameObject.Find("InGameUI");
-
-                _nextLevelPanel = FindObjectInParent(_inGameUI, "NextLevelPanel");
+                _nextLevelPanel = FindObjectInParent(_inGameUI, "NextLevelPanel").Print("panel") as GameObject;
                 _restartLevelPanel = FindObjectInParent(_inGameUI, "RestartLevelPanel");
                 _bulletPanel = GameObject.Find("BulletPanel");
 
@@ -61,8 +59,10 @@ namespace Core
 
         public void EnableNextLevelPanel()
         {
-            // ToDo: It throws MissingReferenceException after restarting game via RestartGamePanel
-            _nextLevelPanel.SetActive(true);
+            if (_nextLevelPanel)
+            {
+                _nextLevelPanel.SetActive(true);
+            }
 
             ShowMedal();
         }
