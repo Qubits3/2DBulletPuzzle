@@ -55,6 +55,7 @@ namespace Core
             if (!_isLevelCompleted && _bulletCount == 0)
             {
                 yield return new WaitForSeconds(0.5f);
+                
                 if (_obstacleManager.AreObstaclesGrounded())
                 {
                     OnOutOfAmmo();
