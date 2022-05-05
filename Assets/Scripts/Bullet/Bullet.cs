@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using Core;
 using UnityEngine;
 
@@ -76,8 +74,6 @@ namespace Bullet
         {
             _bounceCount = BounceCount + 1;
             MoveBullet();
-
-            StartCoroutine(DestroyBulletAfterAWhile());
         }
 
         private void MoveBullet()
@@ -105,10 +101,10 @@ namespace Bullet
             }
         }
 
-        private IEnumerator DestroyBulletAfterAWhile()
+        private void OnTriggerExit2D(Collider2D other)
         {
-            yield return new WaitForSeconds(0.5f);
-            
+            if (other.CompareTag("Enemy")) return;
+
             DestroyBullet();
         }
 
