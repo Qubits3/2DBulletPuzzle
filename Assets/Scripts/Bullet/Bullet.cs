@@ -76,8 +76,6 @@ namespace Bullet
         {
             _bounceCount = BounceCount + 1;
             MoveBullet();
-
-            StartCoroutine(DestroyBulletAfterAWhile());
         }
 
         private void MoveBullet()
@@ -104,10 +102,12 @@ namespace Bullet
                 DestroyBullet();
             }
         }
-
-        private IEnumerator DestroyBulletAfterAWhile()
+        
+        private IEnumerator OnTriggerExit2D(Collider2D other)
         {
-            yield return new WaitForSeconds(4.0f);
+            if (other.CompareTag("Enemy")) yield break;
+
+            yield return new WaitForSeconds(0.2f);
             
             DestroyBullet();
         }
