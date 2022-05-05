@@ -31,7 +31,7 @@ namespace Core
             else
             {
                 _inGameUI = GameObject.Find("InGameUI");
-                _nextLevelPanel = FindObjectInParent(_inGameUI, "NextLevelPanel").Print("panel") as GameObject;
+                _nextLevelPanel = FindObjectInParent(_inGameUI, "NextLevelPanel");
                 _restartLevelPanel = FindObjectInParent(_inGameUI, "RestartLevelPanel");
                 _bulletPanel = GameObject.Find("BulletPanel");
 

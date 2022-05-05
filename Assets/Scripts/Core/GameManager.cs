@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using Bullet;
+using Obstacle;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +11,10 @@ namespace Core
     public class GameManager : MonoBehaviour, IBulletManager
     {
         public int LastFinishedLevel { get; private set; }
-    
+
         private bool _isLevelCompleted;
         private UIManager _uiManager;
+        private ObstacleManager _obstacleManager;
         private BulletThrower _bulletThrower;
 
         private int _bulletCount = 5;
@@ -24,6 +27,7 @@ namespace Core
             if (!Utils.IsThisSceneMainMenu())
             {
                 _bulletThrower = FindObjectOfType<BulletThrower>();
+                _obstacleManager = FindObjectOfType<ObstacleManager>();
                 _bulletThrower.OnCreateBullet += OnShot;
             }
         }
@@ -40,12 +44,25 @@ namespace Core
         {
             _uiManager.EnableRestartLevelPanel();
         }
-    
+
         public void OnBulletDestroy()
+        {
+            StartCoroutine(_OnBulletDestroy());
+        }
+
+        private IEnumerator _OnBulletDestroy()
         {
             if (!_isLevelCompleted && _bulletCount == 0)
             {
-                OnOutOfAmmo();
+                yield return new WaitForSeconds(0.5f);
+                if (_obstacleManager.AreObstaclesGrounded())
+                {
+                    OnOutOfAmmo();
+                }
+                else
+                {
+                    _obstacleManager.CheckObstacles();
+                }
             }
         }
 
@@ -53,7 +70,7 @@ namespace Core
         {
             return !_isLevelCompleted && IsThereEnoughBulletLeft();
         }
-    
+
         private bool IsThereEnoughBulletLeft()
         {
             return _bulletCount > 0;
