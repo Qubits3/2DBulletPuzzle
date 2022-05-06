@@ -26,9 +26,22 @@ namespace Enemy
         private void OnEnemyDead()
         {
             _numberOfEnemies--;
+            
+            IsEnemiesDead();
+        }
+
+        public void IsEnemiesDead()
+        {
             if (_numberOfEnemies == 0)
             {
                 _gameManager.CompleteLevel();
+            }
+            else
+            {
+                if (_gameManager)
+                {
+                    _gameManager.OnBulletDestroy();
+                }
             }
         }
     }

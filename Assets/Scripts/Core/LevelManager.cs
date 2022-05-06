@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,15 @@ namespace Core
             Instance = this;
         
             _gameManager = FindObjectOfType<GameManager>();
+        }
+
+        private void Start()
+        {
+            var isLastLevel = SceneManager.GetActiveScene().name.Equals("Last Level");
+            if (isLastLevel)
+            {
+                _gameManager.ResetData();
+            }
         }
 
         public void RestartLevel()
@@ -34,7 +44,7 @@ namespace Core
         {
             _gameManager.ResetData();
         
-            LoadNextLevel();
+            SceneManager.LoadScene(1);
         }
 
         public void QuitGame()

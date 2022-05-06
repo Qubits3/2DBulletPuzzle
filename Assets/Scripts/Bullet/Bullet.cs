@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Core;
 using UnityEngine;
 
@@ -100,11 +102,13 @@ namespace Bullet
                 DestroyBullet();
             }
         }
-
-        private void OnTriggerExit2D(Collider2D other)
+        
+        private IEnumerator OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy")) return;
+            if (other.CompareTag("Enemy")) yield break;
 
+            yield return new WaitForSeconds(0.2f);
+            
             DestroyBullet();
         }
 
