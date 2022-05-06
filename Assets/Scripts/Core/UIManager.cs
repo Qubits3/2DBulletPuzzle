@@ -54,7 +54,14 @@ namespace Core
 
         private void DrawBulletOnUI()
         {
-            Destroy(_bulletPanel.GetComponentInChildren<Image>().gameObject);
+            GameObject o = null;
+
+            foreach (var image in _bulletPanel.GetComponentsInChildren<Image>())
+            {
+                o = image.gameObject;
+            }
+
+            Destroy(o);
         }
 
         public void EnableNextLevelPanel()
