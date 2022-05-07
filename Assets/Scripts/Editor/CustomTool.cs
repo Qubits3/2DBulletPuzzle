@@ -1,6 +1,6 @@
 ﻿using System;
+using Core;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,9 +20,10 @@ namespace Editor
         {
             if (GUILayout.Button("Open Save File Path"))
             {
-                EditorUtility.RevealInFinder($"C:\\Users\\{Environment.UserName}\\AppData\\LocalLow\\DefaultCompany\\Bullet Puzzle 2D\\");
+                EditorUtility.RevealInFinder(
+                    $"C:\\Users\\{Environment.UserName}\\AppData\\LocalLow\\DefaultCompany\\Bullet Puzzle 2D\\");
             }
-            
+
             SingleScene();
 
             MultipleScene();
@@ -55,25 +56,31 @@ namespace Editor
 
                 SpawnObject("Prefabs/Grid", "Grid");
             }
+            
+            // if (GUILayout.Button("Add Camera"))
+            // {
+            //     SpawnPrefab("Prefabs/Main Camera");
+            // }
 
             GUILayout.Label("Background");
-
-            GUILayout.BeginHorizontal();
             {
-                BackgroundButton("Blue");
-                BackgroundButton("Brown");
-                BackgroundButton("Gray");
-                BackgroundButton("Green");
-                BackgroundButton("Pink");
-            }
-            GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+                {
+                    BackgroundButton("Blue");
+                    BackgroundButton("Brown");
+                    BackgroundButton("Gray");
+                    BackgroundButton("Green");
+                    BackgroundButton("Pink");
+                }
+                GUILayout.EndHorizontal();
 
-            GUILayout.BeginHorizontal();
-            {
-                BackgroundButton("Purple");
-                BackgroundButton("Yellow");
+                GUILayout.BeginHorizontal();
+                {
+                    BackgroundButton("Purple");
+                    BackgroundButton("Yellow");
+                }
+                EditorGUILayout.EndHorizontal();
             }
-            EditorGUILayout.EndHorizontal();
         }
 
         private void MultipleScene()
@@ -113,7 +120,7 @@ namespace Editor
 
         private void BackgroundButton(string color)
         {
-            if (GUILayout.Button(Resources.Load<Texture2D>($"Textures/{color}"), GUIStyle.none))
+            if (GUILayout.Button(Resources.Load<Texture2D>($"Textures/Background/{color}"), GUIStyle.none))
             {
                 try
                 {
