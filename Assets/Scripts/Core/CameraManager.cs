@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Core
@@ -6,11 +5,6 @@ namespace Core
     public class CameraManager : MonoBehaviour
     {
         private void Awake()
-        {
-            SetOrthographicSize();
-        }
-
-        private void Update()
         {
             SetOrthographicSize();
         }
