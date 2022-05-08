@@ -102,15 +102,15 @@ namespace Bullet
                 DestroyBullet();
             }
         }
-        
-        private IEnumerator OnTriggerExit2D(Collider2D other)
-        {
-            if (other.CompareTag("Enemy")) yield break;
 
-            yield return new WaitForSeconds(0.2f);
-            
-            DestroyBullet();
-        }
+        // private IEnumerator OnTriggerExit2D(Collider2D other)
+        // {
+        //     if (other.CompareTag("Enemy")) yield break;
+        //
+        //     yield return new WaitForSeconds(0.2f);
+        //     
+        //     DestroyBullet();
+        // }
 
         private void DestroyBullet()
         {

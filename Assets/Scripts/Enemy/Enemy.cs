@@ -1,27 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Enemy
 {
     public class Enemy : MonoBehaviour
     {
-        public delegate void OnDestroyAction();
+        public delegate void TriggerAction();
 
-        public static event OnDestroyAction OnEnemyDestroy;
-
+        public event TriggerAction OnTriggerEnemy;
+        
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Bullet") || collision.CompareTag("Obstacle"))
             {
-                DestroyEnemy();
-
-                OnEnemyDestroy?.Invoke();
+                OnTriggerEnemy?.Invoke();
             }
-        }
-
-        private void DestroyEnemy()
-        {
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         }
     }
 }
