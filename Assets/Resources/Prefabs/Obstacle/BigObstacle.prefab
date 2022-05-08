@@ -9,9 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5038066155440038588, guid: 8e01467d67a6afc4192fa18c74dac87c,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5038066155440038588, guid: 8e01467d67a6afc4192fa18c74dac87c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5038066155440038588, guid: 8e01467d67a6afc4192fa18c74dac87c,
+        type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 68f54e5fc0fa326458d3e18bdccce704,
+      objectReference: {fileID: 21300000, guid: c14fcdc70b7cdd440bc460d36b16a9b6,
         type: 3}
     - target: {fileID: 5038066155440038589, guid: 8e01467d67a6afc4192fa18c74dac87c,
         type: 3}
@@ -114,7 +124,7 @@ BoxCollider2D:
     border: {x: 0.19, y: 0, z: 0.35999998, w: 0.17999999}
     pivot: {x: 0.36713645, y: 0.35958487}
     oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
