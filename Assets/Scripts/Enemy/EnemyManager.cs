@@ -15,7 +15,7 @@ namespace Enemy
             _enemy = GameObject.FindGameObjectsWithTag("Enemy");
             _gameManager = FindObjectOfType<GameManager>();
 
-            Enemy.OnEnemyDestroy += OnEnemyDead;
+            EnemyParent.OnEnemyDestroy += OnEnemyDead;
         }
 
         private void Start()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Bullet;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,6 +67,13 @@ namespace Core
 
         public void EnableNextLevelPanel()
         {
+            StartCoroutine(_EnableNextLevelPanel());
+        }
+
+        private IEnumerator _EnableNextLevelPanel()
+        {
+            yield return new WaitForSeconds(1.0f);
+            
             if (_nextLevelPanel)
             {
                 _nextLevelPanel.SetActive(true);
