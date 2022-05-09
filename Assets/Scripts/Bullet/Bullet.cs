@@ -103,20 +103,14 @@ namespace Bullet
             }
         }
 
-        // private IEnumerator OnTriggerExit2D(Collider2D other)
-        // {
-        //     if (other.CompareTag("Enemy")) yield break;
-        //
-        //     yield return new WaitForSeconds(0.2f);
-        //     
-        //     DestroyBullet();
-        // }
-
         private void DestroyBullet()
         {
             _rigidbody2D.velocity = Vector3.zero;
             gameObject.SetActive(false);
-
+        }
+        
+        private void OnDisable()
+        {
             _iBulletManager.OnBulletDestroy();
         }
     }

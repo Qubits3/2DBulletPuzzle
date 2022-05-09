@@ -1,3 +1,4 @@
+using Core;
 using UnityEngine;
 
 namespace Enemy
@@ -6,15 +7,15 @@ namespace Enemy
     {
         private GameObject _ragdollEnemy;
         private GameObject _enemy;
-        
+
         public delegate void OnDestroyAction();
 
         public static event OnDestroyAction OnEnemyDestroy;
 
         private void Awake()
         {
-            _ragdollEnemy = FindObjectInParent(gameObject, "RagdollFox");
-            _enemy = FindObjectInParent(gameObject, "Enemy");
+            _ragdollEnemy = gameObject.FindGameObjectInParent("RagdollFox");
+            _enemy = gameObject.FindGameObjectInParentWithTag("Enemy");
 
             _enemy.GetComponent<Enemy>().OnTriggerEnemy += OnEnemyHit;
         }
@@ -27,26 +28,17 @@ namespace Enemy
             DestroyEnemy();
         }
 
-        private GameObject FindObjectInParent(GameObject parent, string objectName)
-        {
-            Transform[] trs = parent.GetComponentsInChildren<Transform>(true);
-            foreach (Transform t in trs)
-            {
-                if (t.name == objectName)
-                {
-                    return t.gameObject;
-                }
-            }
-
-            return null;
-        }
-
         private void DestroyEnemy()
         {
-            // gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            // gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            
             OnEnemyDestroy?.Invoke();
+        }
+
+        private void ApplyForceToHitPoint(GameObject enemy, Vector2 point)
+        {
+            if (enemy.GetComponent<Rigidbody2D>())
+            {
+                enemy.GetComponent<Rigidbody2D>().AddForceAtPosition(point.normalized * 1000, point);
+            }
         }
     }
 }

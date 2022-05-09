@@ -23,9 +23,12 @@ namespace Player
 
         private void DrawCrosshair()
         {
-            if (_gameManager.CanShoot())
+            if (_gameManager)
             {
-                _crosshair.transform.position = _camera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+                if (_gameManager.CanShoot())
+                {
+                    _crosshair.transform.position = _camera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+                }
             }
         }
     }

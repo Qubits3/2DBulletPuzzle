@@ -24,11 +24,14 @@ namespace Obstacle
         {
             if (_activeObstacleCount == 0)
             {
-                _enemyManager.IsEnemiesDead();
-                
+                if (_enemyManager)
+                {
+                    _enemyManager.IsEnemiesDead();
+                }
+
                 return;
             }
-            
+
             Invoke(nameof(CheckObstacles), 0.5f);
         }
 
@@ -41,7 +44,7 @@ namespace Obstacle
         {
             _activeObstacleCount--;
 
-            if (_activeObstacleCount == 0)
+            if (_activeObstacleCount == 0 && _enemyManager)
             {
                 _enemyManager.IsEnemiesDead();
             }
