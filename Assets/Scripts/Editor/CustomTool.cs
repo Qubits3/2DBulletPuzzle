@@ -53,10 +53,11 @@ namespace Editor
 
                 SpawnPrefab("Prefabs/Managers");
                 SpawnPrefab("Prefabs/InGameUI");
+                SpawnPrefab("Prefabs/Environment");
 
                 SpawnObject("Prefabs/Grid", "Grid");
             }
-            
+
             // if (GUILayout.Button("Add Camera"))
             // {
             //     SpawnPrefab("Prefabs/Main Camera");
@@ -64,22 +65,7 @@ namespace Editor
 
             GUILayout.Label("Background");
             {
-                GUILayout.BeginHorizontal();
-                {
-                    BackgroundButton("Blue");
-                    BackgroundButton("Brown");
-                    BackgroundButton("Gray");
-                    BackgroundButton("Green");
-                    BackgroundButton("Pink");
-                }
-                GUILayout.EndHorizontal();
-
-                GUILayout.BeginHorizontal();
-                {
-                    BackgroundButton("Purple");
-                    BackgroundButton("Yellow");
-                }
-                EditorGUILayout.EndHorizontal();
+                BackgroundButton();
             }
         }
 
@@ -118,28 +104,28 @@ namespace Editor
             SpawnObject("Prefabs/Grid", "Grid");
         }
 
-        private void BackgroundButton(string color)
+        private void BackgroundButton()
         {
-            if (GUILayout.Button(Resources.Load<Texture2D>($"Textures/Background/{color}"), GUIStyle.none))
+            if (GUILayout.Button(Resources.Load<Texture2D>($"Textures/Environment/Backgrounds/Sky"), GUIStyle.none))
             {
                 try
                 {
-                    SpawnBackground(color);
+                    SpawnBackground();
                 }
                 catch (NullReferenceException)
                 {
                     SpawnEssentials();
-                    SpawnBackground(color);
+                    SpawnBackground();
                     Debug.Log("Spawned Essentials");
                 }
             }
         }
 
-        private void SpawnBackground(string color)
+        private void SpawnBackground()
         {
             DestroyImmediate(GameObject.FindWithTag("Background"));
-            SpawnPrefab($"Prefabs/Backgrounds/{color}Background").transform.parent =
-                GameObject.Find("Grid").gameObject.transform;
+            SpawnPrefab($"Prefabs/Backgrounds/SkyBackground").transform.parent =
+                GameObject.FindWithTag("Environment").gameObject.transform;
         }
 
         private GameObject SpawnPrefab(string path)
