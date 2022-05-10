@@ -10,7 +10,6 @@ TagManager:
   - Background
   - Crosshair
   - Obstacle
-  - Environment
   layers:
   - Default
   - TransparentFX

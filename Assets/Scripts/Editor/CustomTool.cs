@@ -1,5 +1,4 @@
 ﻿using System;
-using Core;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,19 +42,17 @@ namespace Editor
             {
                 if (!GameObject.FindWithTag("Player"))
                 {
-                    SpawnPrefab("Prefabs/Player").transform.position = new Vector2(-1.5f, -0.15f);
+                    SpawnPrefab("Prefabs/Essentials/Player").transform.position = new Vector2(-1.5f, -0.15f);
                 }
 
                 if (!GameObject.FindWithTag("Enemy"))
                 {
-                    SpawnPrefab("Prefabs/Enemy").transform.position = new Vector2(1.5f, -0.15f);
+                    SpawnPrefab("Prefabs/Essentials/Enemy").transform.position = new Vector2(1.5f, -0.15f);
                 }
 
-                SpawnPrefab("Prefabs/Managers");
-                SpawnPrefab("Prefabs/InGameUI");
-                SpawnPrefab("Prefabs/Environment");
-
-                SpawnObject("Prefabs/Grid", "Grid");
+                SpawnPrefab("Prefabs/Essentials/Managers");
+                SpawnPrefab("Prefabs/Essentials/InGameUI");
+                SpawnPrefab("Prefabs/Essentials/Environment");
             }
 
             // if (GUILayout.Button("Add Camera"))
@@ -95,13 +92,11 @@ namespace Editor
 
         private void SpawnEssentials()
         {
-            SpawnPrefab("Prefabs/Player");
-            SpawnPrefab("Prefabs/Managers");
+            SpawnPrefab("Prefabs/Essentials/Player");
+            SpawnPrefab("Prefabs/Essentials/Managers");
 
-            var enemy = SpawnPrefab("Prefabs/Enemy");
+            var enemy = SpawnPrefab("Prefabs/Essentials/Enemy");
             if (enemy != null) enemy.transform.position = new Vector2(0, 1);
-
-            SpawnObject("Prefabs/Grid", "Grid");
         }
 
         private void BackgroundButton()
