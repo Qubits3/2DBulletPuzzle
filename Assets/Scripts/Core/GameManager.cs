@@ -24,7 +24,7 @@ namespace Core
             LoadData();
 
             _uiManager = FindObjectOfType<UIManager>();
-            if (!Utils.IsThisSceneMainMenu())
+            if (!SceneManager.GetActiveScene().IsMainMenu())
             {
                 _bulletThrower = FindObjectOfType<BulletThrower>();
                 _obstacleManager = FindObjectOfType<ObstacleManager>();
@@ -35,14 +35,20 @@ namespace Core
         public void CompleteLevel()
         {
             _isLevelCompleted = true;
-            _uiManager.EnableNextLevelPanel();
+            if (_uiManager)
+            {
+                _uiManager.EnableNextLevelPanel();
+            }
 
             SaveData();
         }
 
         private void OnOutOfAmmo()
         {
-            _uiManager.EnableRestartLevelPanel();
+            if (_uiManager)
+            {
+                _uiManager.EnableRestartLevelPanel();
+            }
         }
 
         public void OnBulletDestroy()
@@ -89,7 +95,7 @@ namespace Core
 
         private void OnDestroy()
         {
-            if (!Utils.IsThisSceneMainMenu())
+            if (!SceneManager.GetActiveScene().IsMainMenu())
             {
                 _bulletThrower.OnCreateBullet -= OnShot;
             }

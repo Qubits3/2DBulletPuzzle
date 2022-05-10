@@ -21,7 +21,10 @@ namespace Core
             var isLastLevel = SceneManager.GetActiveScene().name.Equals("Last Level");
             if (isLastLevel)
             {
-                _gameManager.ResetData();
+                if (_gameManager)
+                {
+                    _gameManager.ResetData();
+                }
             }
         }
 
@@ -42,7 +45,10 @@ namespace Core
 
         public void StartNewGame()
         {
-            _gameManager.ResetData();
+            if (_gameManager)
+            {
+                _gameManager.ResetData();
+            }
         
             SceneManager.LoadScene(1);
         }

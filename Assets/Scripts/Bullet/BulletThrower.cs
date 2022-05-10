@@ -1,3 +1,4 @@
+using System;
 using Core;
 using UnityEngine;
 
@@ -34,6 +35,20 @@ namespace Bullet
             bullet.SetActive(true);
 
             OnCreateBullet?.Invoke();
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Bullet"))
+            {
+                DestroyBullet(other.gameObject);
+            }
+        }
+        
+        private void DestroyBullet(GameObject bullet)
+        {
+            bullet.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            bullet.SetActive(false);
         }
     }
 }

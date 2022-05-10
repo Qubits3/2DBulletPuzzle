@@ -34,7 +34,10 @@ namespace Enemy
         {
             if (_numberOfEnemies == 0)
             {
-                _gameManager.CompleteLevel();
+                if (_gameManager)
+                {
+                    _gameManager.CompleteLevel();
+                }
             }
             else
             {

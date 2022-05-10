@@ -2,6 +2,7 @@
 using System.Collections;
 using Bullet;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Core
@@ -25,7 +26,7 @@ namespace Core
         {
             _gameManager = FindObjectOfType<GameManager>();
 
-            if (Utils.IsThisSceneMainMenu())
+            if (SceneManager.GetActiveScene().IsMainMenu())
             {
                 _continueButton = GameObject.Find("ContinueButton").GetComponent<Button>();
             }
@@ -47,7 +48,7 @@ namespace Core
 
         private void Start()
         {
-            if (Utils.IsThisSceneMainMenu() && _gameManager.LastFinishedLevel != 0)
+            if (SceneManager.GetActiveScene().IsMainMenu() && _gameManager.LastFinishedLevel != 0)
             {
                 _continueButton.interactable = true;
             }
@@ -57,9 +58,12 @@ namespace Core
         {
             GameObject o = null;
 
-            foreach (var image in _bulletPanel.GetComponentsInChildren<Image>())
+            if (_bulletPanel)
             {
-                o = image.gameObject;
+                foreach (var image in _bulletPanel.GetComponentsInChildren<Image>())
+                {
+                    o = image.gameObject;
+                }
             }
 
             Destroy(o);
@@ -84,7 +88,10 @@ namespace Core
 
         public void EnableRestartLevelPanel()
         {
-            _restartLevelPanel.SetActive(true);
+            if (_restartLevelPanel)
+            {
+                _restartLevelPanel.SetActive(true);
+            }
         }
 
         private void ShowMedal()
@@ -129,7 +136,7 @@ namespace Core
 
         private void OnDestroy()
         {
-            if (!Utils.IsThisSceneMainMenu())
+            if (!SceneManager.GetActiveScene().IsMainMenu())
             {
                 _bulletThrower.OnCreateBullet -= DrawBulletOnUI;
             }
