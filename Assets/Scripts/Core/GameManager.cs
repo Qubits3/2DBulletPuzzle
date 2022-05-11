@@ -47,6 +47,7 @@ namespace Core
         {
             if (_uiManager)
             {
+                _isLevelCompleted = true;
                 _uiManager.EnableRestartLevelPanel();
             }
         }
