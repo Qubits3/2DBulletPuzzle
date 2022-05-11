@@ -43,7 +43,7 @@ namespace Core
             SaveData();
         }
 
-        private void OnOutOfAmmo()
+        public void FailedLevel()
         {
             if (_uiManager)
             {
@@ -64,7 +64,7 @@ namespace Core
 
                 if (_obstacleManager.AreObstaclesGrounded())
                 {
-                    OnOutOfAmmo();
+                    FailedLevel();
                 }
                 else
                 {

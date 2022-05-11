@@ -123,6 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &107241473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8567439125849826780, guid: 22a8d83e1fde2f14281d729ea0331002,
+    type: 3}
+  m_PrefabInstance: {fileID: 240934838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &107241478
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107241473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.009141803, y: 0.1371274}
+  m_Size: {x: 0.8656728, y: 2.2432883}
+  m_Direction: 0
 --- !u!1001 &240934838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +152,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8567439125579618784, guid: 22a8d83e1fde2f14281d729ea0331002,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567439125821917246, guid: 22a8d83e1fde2f14281d729ea0331002,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567439125821917246, guid: 22a8d83e1fde2f14281d729ea0331002,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 8567439125849826778, guid: 22a8d83e1fde2f14281d729ea0331002,
         type: 3}
       propertyPath: m_RootOrder
