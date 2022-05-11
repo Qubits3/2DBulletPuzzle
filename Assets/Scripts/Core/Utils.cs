@@ -15,10 +15,10 @@ namespace Core
             if (message.Equals(""))
             {
                 Debug.Log($"{anObject}");
-                
+
                 return anObject;
             }
-            
+
             Debug.Log($"{message}: {anObject}");
 
             return anObject;

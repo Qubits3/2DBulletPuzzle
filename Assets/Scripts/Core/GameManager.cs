@@ -13,6 +13,7 @@ namespace Core
         public int LastFinishedLevel { get; private set; }
 
         private bool _isLevelCompleted;
+        private bool _canWinGame = true;
         private UIManager _uiManager;
         private ObstacleManager _obstacleManager;
         private BulletThrower _bulletThrower;
@@ -34,6 +35,8 @@ namespace Core
 
         public void CompleteLevel()
         {
+            if (!_canWinGame) return;
+
             _isLevelCompleted = true;
             if (_uiManager)
             {
@@ -47,6 +50,8 @@ namespace Core
         {
             if (_uiManager)
             {
+                _canWinGame = false;
+                _isLevelCompleted = true;
                 _uiManager.EnableRestartLevelPanel();
             }
         }
