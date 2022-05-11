@@ -12,6 +12,13 @@ namespace Core
 
         public static object Print(this object anObject, string message = "")
         {
+            if (message.Equals(""))
+            {
+                Debug.Log($"{anObject}");
+                
+                return anObject;
+            }
+            
             Debug.Log($"{message}: {anObject}");
 
             return anObject;

@@ -10,6 +10,11 @@ TagManager:
   - Background
   - Crosshair
   - Obstacle
+  - Bush
+  - Flower
+  - Grass
+  - Rock
+  - Tree
   layers:
   - Default
   - TransparentFX

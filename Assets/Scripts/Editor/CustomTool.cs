@@ -1,5 +1,4 @@
 ﻿using System;
-using Core;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,20 +42,19 @@ namespace Editor
             {
                 if (!GameObject.FindWithTag("Player"))
                 {
-                    SpawnPrefab("Prefabs/Player").transform.position = new Vector2(-1.5f, -0.15f);
+                    SpawnPrefab("Prefabs/Essentials/Player").transform.position = new Vector2(-1.5f, -0.15f);
                 }
 
                 if (!GameObject.FindWithTag("Enemy"))
                 {
-                    SpawnPrefab("Prefabs/Enemy").transform.position = new Vector2(1.5f, -0.15f);
+                    SpawnPrefab("Prefabs/Essentials/Enemy").transform.position = new Vector2(1.5f, -0.15f);
                 }
 
-                SpawnPrefab("Prefabs/Managers");
-                SpawnPrefab("Prefabs/InGameUI");
-
-                SpawnObject("Prefabs/Grid", "Grid");
+                SpawnPrefab("Prefabs/Essentials/Managers");
+                SpawnPrefab("Prefabs/Essentials/InGameUI");
+                SpawnPrefab("Prefabs/Essentials/Environment");
             }
-            
+
             // if (GUILayout.Button("Add Camera"))
             // {
             //     SpawnPrefab("Prefabs/Main Camera");
@@ -64,22 +62,7 @@ namespace Editor
 
             GUILayout.Label("Background");
             {
-                GUILayout.BeginHorizontal();
-                {
-                    BackgroundButton("Blue");
-                    BackgroundButton("Brown");
-                    BackgroundButton("Gray");
-                    BackgroundButton("Green");
-                    BackgroundButton("Pink");
-                }
-                GUILayout.EndHorizontal();
-
-                GUILayout.BeginHorizontal();
-                {
-                    BackgroundButton("Purple");
-                    BackgroundButton("Yellow");
-                }
-                EditorGUILayout.EndHorizontal();
+                BackgroundButton();
             }
         }
 
@@ -109,37 +92,35 @@ namespace Editor
 
         private void SpawnEssentials()
         {
-            SpawnPrefab("Prefabs/Player");
-            SpawnPrefab("Prefabs/Managers");
+            SpawnPrefab("Prefabs/Essentials/Player");
+            SpawnPrefab("Prefabs/Essentials/Managers");
 
-            var enemy = SpawnPrefab("Prefabs/Enemy");
+            var enemy = SpawnPrefab("Prefabs/Essentials/Enemy");
             if (enemy != null) enemy.transform.position = new Vector2(0, 1);
-
-            SpawnObject("Prefabs/Grid", "Grid");
         }
 
-        private void BackgroundButton(string color)
+        private void BackgroundButton()
         {
-            if (GUILayout.Button(Resources.Load<Texture2D>($"Textures/Background/{color}"), GUIStyle.none))
+            if (GUILayout.Button(Resources.Load<Texture2D>($"Textures/Environment/Backgrounds/Sky"), GUIStyle.none))
             {
                 try
                 {
-                    SpawnBackground(color);
+                    SpawnBackground();
                 }
                 catch (NullReferenceException)
                 {
                     SpawnEssentials();
-                    SpawnBackground(color);
+                    SpawnBackground();
                     Debug.Log("Spawned Essentials");
                 }
             }
         }
 
-        private void SpawnBackground(string color)
+        private void SpawnBackground()
         {
             DestroyImmediate(GameObject.FindWithTag("Background"));
-            SpawnPrefab($"Prefabs/Backgrounds/{color}Background").transform.parent =
-                GameObject.Find("Grid").gameObject.transform;
+            SpawnPrefab($"Prefabs/Backgrounds/SkyBackground").transform.parent =
+                GameObject.FindWithTag("Environment").gameObject.transform;
         }
 
         private GameObject SpawnPrefab(string path)
