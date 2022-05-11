@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 309bd2e9801366f45af532f52ed9ad9f
+guid: a146d341289a7e146a0a933a51f30a2a
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -4944935254978028623
-    second: Killer Bunny_0
+    second: Bunny Live Head
   - first:
       213: 3718801755231380454
-    second: Killer Bunny_1
+    second: Bunny Dead Head
   - first:
       213: -2253861656287509051
-    second: Killer Bunny_2
+    second: Bunny Right Arm
   - first:
       213: 2208856094443487075
-    second: Killer Bunny_3
+    second: Bunny Gun
   - first:
       213: 2340496795754128837
-    second: Killer Bunny_4
+    second: Bunny Body
   - first:
       213: -8019365045725934056
-    second: Killer Bunny_5
+    second: Bunny Left Arm
+  - first:
+      213: 9175289130535403279
+    second: Bunny Right Leg
+  - first:
+      213: 9052426539350700297
+    second: Bunny Left Leg
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,15 +151,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Killer Bunny_0
+      name: Bunny Live Head
       rect:
         serializedVersion: 2
-        x: 4
-        y: 26
-        width: 7
-        height: 20
+        x: 1
+        y: 39
+        width: 30
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,15 +172,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Killer Bunny_1
+      name: Bunny Dead Head
       rect:
         serializedVersion: 2
-        x: 14
+        x: 33
         y: 39
         width: 30
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,15 +193,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Killer Bunny_2
+      name: Bunny Right Arm
       rect:
         serializedVersion: 2
-        x: 56
-        y: 34
+        x: 1
+        y: 19
         width: 4
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,15 +214,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Killer Bunny_3
+      name: Bunny Gun
       rect:
         serializedVersion: 2
-        x: 6
-        y: 2
-        width: 7
-        height: 13
+        x: 11
+        y: 15
+        width: 5
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,15 +235,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Killer Bunny_4
+      name: Bunny Body
       rect:
         serializedVersion: 2
         x: 20
-        y: 4
+        y: 3
         width: 24
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,15 +256,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Killer Bunny_5
+      name: Bunny Left Arm
       rect:
         serializedVersion: 2
-        x: 53
-        y: 2
-        width: 7
-        height: 12
+        x: 59
+        y: 16
+        width: 4
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -266,6 +272,48 @@ TextureImporter:
       bones: []
       spriteID: 81e4255bafd75b090800000000000000
       internalID: -8019365045725934056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Right Leg
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0fb019f9dc255f70800000000000000
+      internalID: 9175289130535403279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bunny Left Leg
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 0
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9013159c9fda0ad70800000000000000
+      internalID: 9052426539350700297
       vertices: []
       indices: 
       edges: []

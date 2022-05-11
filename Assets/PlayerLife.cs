@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameObject _ragdollPlayer;
+    private GameObject _player;
+    private GameManager _gameManager;
+    private void Awake()
     {
-        
-    }
+        _ragdollPlayer = gameObject.FindGameObjectInParent("Ragdoll Bunny");
+        _player = gameObject.FindGameObjectInParent("Bunny");
 
-    // Update is called once per frame
-    void Update()
+        _gameManager = FindObjectOfType<GameManager>();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Bullet") || collision.CompareTag("Obstacle"))
+        {
+            if (_gameManager)
+            {
+                _player.SetActive(false);
+                _ragdollPlayer.SetActive(true);
+                _gameManager.FailedLevel();
+            }
+        }
     }
 }

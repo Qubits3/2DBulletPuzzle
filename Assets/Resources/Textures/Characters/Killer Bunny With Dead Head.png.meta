@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: 3bef98b01d0580c47b7f300b229d800b
+guid: 6fbff097ac75a9743b33f2889b0c2f4d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3818134523855849363
-    second: Pixel Fox_0
+      213: 4196790642213675793
+    second: Killer Bunny With Dead Head_0
   - first:
-      213: 4852897890669019002
-    second: Pixel Fox_1
+      213: -3777237255936262974
+    second: Killer Bunny With Dead Head_1
   - first:
-      213: 702325194644724871
-    second: Pixel Fox_2
+      213: -8820119110172832151
+    second: Killer Bunny With Dead Head_2
   - first:
-      213: -3250434109376673159
-    second: Pixel Fox_3
+      213: 7677461779617303345
+    second: Killer Bunny With Dead Head_3
   - first:
-      213: 6968357700645748039
-    second: Pixel Fox_4
+      213: 1887031949228726395
+    second: Killer Bunny With Dead Head_4
   - first:
-      213: -6592248935201431637
-    second: Pixel Fox_5
+      213: -6436613025520252241
+    second: Killer Bunny With Dead Head_5
+  - first:
+      213: -6881587742659201804
+    second: Killer Bunny With Dead Head_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,76 +148,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pixel Fox_0
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 22
-        width: 5
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d68bae041e2430bc0800000000000000
-      internalID: -3818134523855849363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pixel Fox_1
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 41
-        width: 22
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7fb1987be4f85340800000000000000
-      internalID: 4852897890669019002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pixel Fox_2
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 22
-        width: 5
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78c1b9f1b092fb900800000000000000
-      internalID: 702325194644724871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pixel Fox_3
+      name: Killer Bunny With Dead Head_0
       rect:
         serializedVersion: 2
         x: 1
-        y: 4
-        width: 7
-        height: 17
+        y: 39
+        width: 30
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,20 +162,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97a4ac8266324e2d0800000000000000
-      internalID: -3250434109376673159
+      spriteID: 11364d18adefd3a30800000000000000
+      internalID: 4196790642213675793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixel Fox_4
+      name: Killer Bunny With Dead Head_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 39
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cc3c877abe849bc0800000000000000
+      internalID: -3777237255936262974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Killer Bunny With Dead Head_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 15
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e83897664a89580800000000000000
+      internalID: -8820119110172832151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Killer Bunny With Dead Head_3
       rect:
         serializedVersion: 2
         x: 20
         y: 3
         width: 24
-        height: 29
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74df8d6a86494b060800000000000000
-      internalID: 6968357700645748039
+      spriteID: 13b4ab6cfc2db8a60800000000000000
+      internalID: 7677461779617303345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixel Fox_5
+      name: Killer Bunny With Dead Head_4
       rect:
         serializedVersion: 2
-        x: 56
-        y: 4
-        width: 7
-        height: 17
+        x: 59
+        y: 16
+        width: 4
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,8 +246,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baf1f5a4580a384a0800000000000000
-      internalID: -6592248935201431637
+      spriteID: b7857955f85103a10800000000000000
+      internalID: 1887031949228726395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Killer Bunny With Dead Head_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa86315e8e8ca6a0800000000000000
+      internalID: -6436613025520252241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Killer Bunny With Dead Head_6
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 0
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f4bd148860bf70a0800000000000000
+      internalID: -6881587742659201804
       vertices: []
       indices: 
       edges: []

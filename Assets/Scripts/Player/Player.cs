@@ -9,20 +9,7 @@ namespace Player
         private Camera _camera;
         private GameManager _gameManager;
 
-        public delegate void TriggerAction();
-
-        public event TriggerAction OnTriggerPlayer;
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Bullet") || collision.CompareTag("Obstacle"))
-            {
-                if (_gameManager)
-                {
-                    _gameManager.FailedLevel();
-                }
-            }
-        }
+        
         private void Awake()
         {
             _camera = Camera.main;
