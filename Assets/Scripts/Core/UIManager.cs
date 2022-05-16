@@ -98,11 +98,17 @@ namespace Core
         {
             switch (_gameManager.GetBulletCount())
             {
+                case 4:
+                    DeleteMedal(Medal.Bronze);
+                    DeleteMedal(Medal.Silver);
+                    break;
                 case 3:
                     DeleteMedal(Medal.Gold);
+                    DeleteMedal(Medal.Bronze);
                     break;
                 case 2:
                     DeleteMedal(Medal.Gold);
+                    DeleteMedal(Medal.Bronze);
                     return;
                 case 1:
                     DeleteMedal(Medal.Gold);

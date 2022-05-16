@@ -10,15 +10,15 @@ namespace Core
             return scene.buildIndex == 0;
         }
 
+        public static object Print(this object anObject)
+        {
+            Debug.Log($"{anObject}");
+
+            return anObject;
+        }
+
         public static object Print(this object anObject, string message = "")
         {
-            if (message.Equals(""))
-            {
-                Debug.Log($"{anObject}");
-
-                return anObject;
-            }
-
             Debug.Log($"{message}: {anObject}");
 
             return anObject;

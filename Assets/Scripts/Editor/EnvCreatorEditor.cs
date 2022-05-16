@@ -22,9 +22,16 @@ namespace Editor
         {
             base.OnInspectorGUI();
 
-            if (GUILayout.Button("Create"))
+            if (GUILayout.Button("Spawn Trees"))
             {
-                _creator.Create();
+                _creator.SpawnTrees();
+            }
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("Spawn Grasses"))
+            {
+                _creator.SpawnGrasses();
             }
         }
     }
