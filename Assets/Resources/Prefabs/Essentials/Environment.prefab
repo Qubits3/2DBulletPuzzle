@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505440271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.77, z: 0}
+  m_LocalScale: {x: 5.403125, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4022144490902793028}
   m_RootOrder: 1
@@ -44,6 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e0a3aa36464e76b791eac9ff16d327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  propReferences: {fileID: 11400000, guid: a0cc7326065042a4b97e7fe69676fd76, type: 2}
+  bushCount: 2
+  flowerCount: 5
+  grassCount: 10
+  rockCount: 5
+  treeCount: 2
 --- !u!61 &505440274
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70,6 +76,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.01}
   m_EdgeRadius: 0
+--- !u!1 &846645823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846645824}
+  - component: {fileID: 4755524346931942290}
+  m_Layer: 0
+  m_Name: CloudCreator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &846645824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846645823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 13, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4022144490902793028}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4755524346931942290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846645823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d99485646bb9e4e8c95772af28a681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propReferences: {fileID: 11400000, guid: a0cc7326065042a4b97e7fe69676fd76, type: 2}
 --- !u!1 &4022144490902793029
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +149,7 @@ Transform:
   m_Children:
   - {fileID: 1441570584038143051}
   - {fileID: 505440272}
+  - {fileID: 846645824}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -118,16 +169,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580839476420827598, guid: 1c484497944d1444a9d7cfec4872b048,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.091380894
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580839476420827598, guid: 1c484497944d1444a9d7cfec4872b048,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.05133653
       objectReference: {fileID: 0}
     - target: {fileID: 2580839476420827598, guid: 1c484497944d1444a9d7cfec4872b048,
         type: 3}

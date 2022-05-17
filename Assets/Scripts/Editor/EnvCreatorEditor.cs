@@ -1,6 +1,5 @@
-﻿using System;
-using Core;
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
+using Environment;
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -15,12 +14,53 @@ namespace Editor
 
         private void OnEnable()
         {
-            _creator = (EnvCreator) target;
+            _creator = (EnvCreator)target;
         }
 
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("SPAWN ALL"))
+            {
+                _creator.SpawnBushes();
+                _creator.SpawnFlower();
+                _creator.SpawnGrasses();
+                _creator.SpawnRocks();
+                _creator.SpawnTrees();
+            }
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("Spawn Bushes"))
+            {
+                _creator.SpawnBushes();
+            }
+
+            GUILayout.Space(5);
+
+            if (GUILayout.Button("Spawn Flowers"))
+            {
+                _creator.SpawnFlower();
+            }
+
+            GUILayout.Space(5);
+
+            if (GUILayout.Button("Spawn Grasses"))
+            {
+                _creator.SpawnGrasses();
+            }
+
+            GUILayout.Space(5);
+
+            if (GUILayout.Button("Spawn Rocks"))
+            {
+                _creator.SpawnRocks();
+            }
+
+            GUILayout.Space(5);
 
             if (GUILayout.Button("Spawn Trees"))
             {
@@ -29,9 +69,13 @@ namespace Editor
 
             GUILayout.Space(10);
 
-            if (GUILayout.Button("Spawn Grasses"))
+            var style = new GUIStyle(EditorStyles.toolbarButton);
+
+            style.normal.textColor = Color.red;
+
+            if (GUILayout.Button("CLEAR ALL", style))
             {
-                _creator.SpawnGrasses();
+                _creator.ClearScene(new string[] { "Bush", "Flower", "Grass", "Rock", "Tree" });
             }
         }
     }

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daecc36551786c440b3f86590abc9ae0, type: 3}
+  m_Name: PropReferences
+  m_EditorClassIdentifier: 
+  bushes:
+  - {fileID: 6979214650193198305, guid: 834561356b6065742bca43291617eb43, type: 3}
+  - {fileID: 5563032599394925937, guid: 17d05cb8f48dc1447ab074cc3e8cfe7c, type: 3}
+  flowers:
+  - {fileID: 6033467519078063515, guid: 4e3d12d7ebae58846b9824bf807f78aa, type: 3}
+  - {fileID: 316167090763521589, guid: 52fe491f4dccd6c46af7bcac19987954, type: 3}
+  - {fileID: 8937704692001123104, guid: 2878d5adfa9fc0a48adf718770157220, type: 3}
+  - {fileID: 497156493013776825, guid: a1b84557e647b0143bded4882fdf3903, type: 3}
+  - {fileID: 3451650198962454822, guid: f9b0ab751af6aaa4d8a267f3cad5677c, type: 3}
+  grasses:
+  - {fileID: 4633449380268248874, guid: 216d4c63f9823d747985bf4665d527d8, type: 3}
+  - {fileID: 1899576145427338083, guid: 71153b02800da6b449bcc2dde617103f, type: 3}
+  - {fileID: 1759521357842278747, guid: 302b7d7d3798b4640a4168287b273731, type: 3}
+  rocks:
+  - {fileID: 2552272115450040491, guid: 71010ed72c14bc349802a4748bcd54f2, type: 3}
+  - {fileID: 4878990308187295905, guid: 31b2d770a9cabd74db1fcd294241d7a5, type: 3}
+  - {fileID: 8626434123813511156, guid: 985991a8a4548de44beb4669c7fe12f1, type: 3}
+  - {fileID: 480069213042969494, guid: e565470f4402fb14fad062652aa27363, type: 3}
+  trees:
+  - {fileID: 4085149168962366302, guid: efcfe3e641256ed48839f0f6f5b5df5c, type: 3}
+  - {fileID: 3669661209802482204, guid: 3ec73c74238ec644a8d9bca7591b1a4b, type: 3}
+  - {fileID: 6329261474892690525, guid: c45ba767797305448b22eb43eef292e6, type: 3}
+  clouds:
+  - {fileID: 2012471340560304274, guid: 77f00e5b1820fdc4aa130e280b4a6684, type: 3}
+  - {fileID: 5905147616134388241, guid: c4cff2a8e2266294b8034ab273b3d502, type: 3}
