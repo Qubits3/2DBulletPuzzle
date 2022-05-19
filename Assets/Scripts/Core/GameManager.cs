@@ -46,7 +46,7 @@ namespace Core
             SaveData();
         }
 
-        public void FailedLevel()
+        public void LevelFailed()
         {
             if (_uiManager)
             {
@@ -69,7 +69,7 @@ namespace Core
 
                 if (_obstacleManager.AreObstaclesGrounded())
                 {
-                    FailedLevel();
+                    LevelFailed();
                 }
                 else
                 {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Assets.Scripts.Environment;
 
 namespace Environment
 {
@@ -13,29 +14,17 @@ namespace Environment
 
         public GameObject[] clouds;
 
-        public GameObject GetRandomBush()
+        public GameObject GetRandomProp(Props prop)
         {
-            return bushes[Random.Range(0, bushes.Length)];
-        }
-
-        public GameObject GetRandomFlower()
-        {
-            return flowers[Random.Range(0, flowers.Length)];
-        }
-
-        public GameObject GetRandomGrass()
-        {
-            return grasses[Random.Range(0, grasses.Length)];
-        }
-
-        public GameObject GetRandomRock()
-        {
-            return rocks[Random.Range(0, rocks.Length)];
-        }
-
-        public GameObject GetRandomTree()
-        {
-            return trees[Random.Range(0, trees.Length)];
+            return prop switch
+            {
+                Props.Bush => bushes[Random.Range(0, bushes.Length)],
+                Props.Flower => flowers[Random.Range(0, flowers.Length)],
+                Props.Grass => grasses[Random.Range(0, grasses.Length)],
+                Props.Rock => rocks[Random.Range(0, rocks.Length)],
+                Props.Tree => trees[Random.Range(0, trees.Length)],
+                _ => null,
+            };
         }
 
         public GameObject GetRandomCloud()

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    private float cloudSpeed = 0.5f;
+    private readonly float cloudSpeed = 0.5f;
+    private ICloudManager cloudManager;
+
+    private void Awake()
+    {
+        cloudManager = FindObjectOfType<CloudCreator>() as ICloudManager;
+    }
 
     void Update()
     {
@@ -19,7 +25,7 @@ public class Cloud : MonoBehaviour
     private void OnBecameInvisible()
     {
         if (!gameObject.scene.isLoaded) return;
-        (FindObjectOfType<CloudCreator>() as ICloudManager).OnCloudInvisible();
+        cloudManager.OnCloudInvisible();
 
         StartCoroutine(DestroyCloud());
     }

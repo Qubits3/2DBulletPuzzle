@@ -18,7 +18,6 @@ namespace Bullet
         private LineRenderer _lineRenderer;
         private Ray2D _ray;
         private RaycastHit2D _hit;
-        private Vector3 _direction;
 
         private IBulletManager _iBulletManager;
 

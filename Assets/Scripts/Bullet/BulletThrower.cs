@@ -1,4 +1,3 @@
-using System;
 using Core;
 using UnityEngine;
 
@@ -30,8 +29,7 @@ namespace Bullet
         private void CreateBullet()
         {
             var bullet = ObjectPooler.SharedInstance.GetPooledObject();
-            bullet.transform.position = _bulletTransform.position;
-            bullet.transform.rotation = _bulletTransform.rotation;
+            bullet.transform.SetPositionAndRotation(_bulletTransform.position, _bulletTransform.rotation);
             bullet.SetActive(true);
 
             OnCreateBullet?.Invoke();

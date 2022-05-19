@@ -3,25 +3,26 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using System;
-using static Core.Utils;
+using Assets.Scripts.Environment;
+using UnityEditor.SceneManagement;
 
 namespace Environment
 {
 #if UNITY_EDITOR
     public class EnvCreator : MonoBehaviour
     {
-        [SerializeField] private PropReferences propReferences;
+        public PropReferences propReferences;
 
         private BoxCollider2D _collider;
         private GameObject _props;
         private float _spawnRegion;
-        [SerializeField, Range(0, 10), Space(10)] private int bushCount = 2;
-        [SerializeField, Range(0, 20)] private int flowerCount = 5;
-        [SerializeField, Range(0, 20)] private int grassCount = 10;
-        [SerializeField, Range(0, 20)] private int rockCount = 5;
-        [SerializeField, Range(0, 20)] private int treeCount = 2;
 
         private void Awake()
+        {
+            SetReferences();
+        }
+
+        private void OnValidate()
         {
             SetReferences();
         }
@@ -33,39 +34,11 @@ namespace Environment
             _spawnRegion = _collider.bounds.size.x;
         }
 
-        public void SpawnBushes()
+        public void SpawnProp(Props prop, int propCount)
         {
-            CreateProps();
+            CreatePropsGameObject();
 
-            SpawnPrefab(propReferences.GetRandomBush, "Bush", -(_spawnRegion / 2), _spawnRegion / 2, _props, bushCount);
-        }
-
-        public void SpawnFlower()
-        {
-            CreateProps();
-
-            SpawnPrefab(propReferences.GetRandomFlower, "Flower", -(_spawnRegion / 2), _spawnRegion / 2, _props, flowerCount);
-        }
-
-        public void SpawnGrasses()
-        {
-            CreateProps();
-
-            SpawnPrefab(propReferences.GetRandomGrass, "Grass", -(_spawnRegion / 2), _spawnRegion / 2, _props, grassCount);
-        }
-
-        public void SpawnRocks()
-        {
-            CreateProps();
-
-            SpawnPrefab(propReferences.GetRandomRock, "Rock", -(_spawnRegion / 2), _spawnRegion / 2, _props, rockCount);
-        }
-
-        public void SpawnTrees()
-        {
-            CreateProps();
-
-            SpawnPrefab(propReferences.GetRandomTree, "Tree", -(_spawnRegion / 2), _spawnRegion / 2, _props, treeCount);
+            SpawnPrefab(prop, -(_spawnRegion / 2), _spawnRegion / 2, _props, propCount);
         }
 
         private void DeleteObjectsWithTag(string tag)
@@ -74,38 +47,18 @@ namespace Environment
             {
                 DestroyImmediate(o);
             }
+
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
 
-        private GameObject SpawnPrefab(Func<GameObject> randomPropFunction, string tag, float minPos, float maxPos)
+        private GameObject[] SpawnPrefab(Props tag, float minPos, float maxPos, GameObject _parent, int spawnCount)
         {
-            DeleteObjectsWithTag(tag);
-
-            var o = PrefabUtility.InstantiatePrefab(randomPropFunction.Invoke()) as GameObject;
-            o.transform.position = new Vector3(UnityEngine.Random.Range(minPos, maxPos), gameObject.transform.position.y);
-            EditorUtility.SetDirty(o);
-
-            return o;
-        }
-
-        private GameObject SpawnPrefab(Func<GameObject> randomPropFunction, string tag, float minPos, float maxPos, GameObject _parent)
-        {
-            DeleteObjectsWithTag(tag);
-
-            var o = PrefabUtility.InstantiatePrefab(randomPropFunction.Invoke(), _parent.transform) as GameObject;
-            o.transform.position = new Vector3(UnityEngine.Random.Range(minPos, maxPos), gameObject.transform.position.y);
-            EditorUtility.SetDirty(o);
-
-            return o;
-        }
-
-        private GameObject[] SpawnPrefab(Func<GameObject> randomPropFunction, string tag, float minPos, float maxPos, GameObject _parent, int spawnCount)
-        {
-            DeleteObjectsWithTag(tag);
+            DeleteObjectsWithTag(Enum.GetName(typeof(Props), tag));
 
             int i;
             for (i = 0; i < spawnCount; i++)
             {
-                var o = PrefabUtility.InstantiatePrefab(randomPropFunction.Invoke(), _parent.transform) as GameObject;
+                var o = PrefabUtility.InstantiatePrefab(propReferences.GetRandomProp(tag), _parent.transform) as GameObject;
                 o.transform.position = new Vector3(UnityEngine.Random.Range(minPos, maxPos), gameObject.transform.position.y);
                 EditorUtility.SetDirty(o);
             }
@@ -113,15 +66,15 @@ namespace Environment
             return new GameObject[i];
         }
 
-        public void ClearScene(string[] tags)
+        public void ClearProps(string[] props)
         {
-            foreach (var tag in tags)
+            foreach (var prop in props)
             {
-                DeleteObjectsWithTag(tag);
+                DeleteObjectsWithTag(prop);
             }
         }
 
-        private void CreateProps()
+        private void CreatePropsGameObject()
         {
             if (!GameObject.Find("Props"))
             {
@@ -136,11 +89,6 @@ namespace Environment
         private GameObject CreateGameObject(string _name)
         {
             return new GameObject(_name);
-        }
-
-        private void OnValidate()
-        {
-            SetReferences();
         }
     }
 }

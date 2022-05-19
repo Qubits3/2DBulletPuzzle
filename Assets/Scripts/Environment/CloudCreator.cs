@@ -32,7 +32,6 @@ public class CloudCreator : MonoBehaviour, ICloudManager
         SpawnPrefab(propReferences.GetRandomCloud, 0, _spawnRegion, count);
     }
 
-
     private void SpawnCloudRandomly(int count)
     {
         SpawnPrefabAtRandomPosition(propReferences.GetRandomCloud, 0, _spawnRegion, count);
@@ -46,6 +45,7 @@ public class CloudCreator : MonoBehaviour, ICloudManager
             var o = PrefabUtility.InstantiatePrefab(randomPropFunction.Invoke()) as GameObject;
             float randomScale = UnityEngine.Random.Range(0.7f, 1.2f);
             o.transform.localScale = new Vector3(randomScale, randomScale);
+
             o.transform.position = new Vector3(UnityEngine.Random.Range(minPos, maxPos) / 5,
                 UnityEngine.Random.Range(minPos, maxPos));
         }
@@ -61,6 +61,7 @@ public class CloudCreator : MonoBehaviour, ICloudManager
             var o = PrefabUtility.InstantiatePrefab(randomPropFunction.Invoke()) as GameObject;
             float randomScale = UnityEngine.Random.Range(0.7f, 1.2f);
             o.transform.localScale = new Vector3(randomScale, randomScale);
+
             o.transform.position = new Vector3(UnityEngine.Random.Range(transform.position.x - 2, transform.position.x + 2),
                 UnityEngine.Random.Range(minPos, maxPos));
         }

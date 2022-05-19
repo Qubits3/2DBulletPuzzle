@@ -44,8 +44,7 @@ namespace Enemy
         }
         private void ApplyBleeding(GameObject shootedBodyPart,Vector2 hitPos)
         {
-            bleedingParticleSystem.transform.position = hitPos;
-            bleedingParticleSystem.transform.rotation = Quaternion.FromToRotation(transform.forward, hit.normal) * transform.rotation;
+            bleedingParticleSystem.transform.SetPositionAndRotation(hitPos, Quaternion.FromToRotation(transform.forward, hit.normal) * transform.rotation);
             bleedingParticleSystem.transform.SetParent(shootedBodyPart.transform);
             bleedingParticleSystem.Play();
         }

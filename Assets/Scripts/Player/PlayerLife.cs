@@ -26,7 +26,7 @@ namespace Player
                     bulletPos = collision.transform.position;
                     _player.SetActive(false);
                     _ragdollPlayer.SetActive(true);
-                    _gameManager.FailedLevel();
+                    _gameManager.LevelFailed();
                 }
             }
         }

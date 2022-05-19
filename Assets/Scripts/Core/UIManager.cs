@@ -33,13 +33,13 @@ namespace Core
             else
             {
                 _inGameUI = GameObject.Find("InGameUI");
-                _nextLevelPanel = FindObjectInParent(_inGameUI, "NextLevelPanel");
-                _restartLevelPanel = FindObjectInParent(_inGameUI, "RestartLevelPanel");
+                _nextLevelPanel = _inGameUI.FindGameObjectInParent("NextLevelPanel");
+                _restartLevelPanel = _inGameUI.FindGameObjectInParent("RestartLevelPanel");
                 _bulletPanel = GameObject.Find("BulletPanel");
 
-                _medals[(int) Medal.Bronze] = FindObjectInParent(_inGameUI, "BronzeMedal");
-                _medals[(int) Medal.Silver] = FindObjectInParent(_inGameUI, "SilverMedal");
-                _medals[(int) Medal.Gold] = FindObjectInParent(_inGameUI, "GoldMedal");
+                _medals[(int) Medal.Bronze] = _inGameUI.FindGameObjectInParent("BronzeMedal");
+                _medals[(int) Medal.Silver] = _inGameUI.FindGameObjectInParent("SilverMedal");
+                _medals[(int) Medal.Gold] = _inGameUI.FindGameObjectInParent("GoldMedal");
 
                 _bulletThrower = FindObjectOfType<BulletThrower>();
                 _bulletThrower.OnCreateBullet += DrawBulletOnUI;
@@ -124,20 +124,6 @@ namespace Core
         private void DeleteMedal(Medal medal)
         {
             Destroy(_medals[(int) medal]);
-        }
-
-        private GameObject FindObjectInParent(GameObject parent, string objectName)
-        {
-            Transform[] trs = parent.GetComponentsInChildren<Transform>(true);
-            foreach (Transform t in trs)
-            {
-                if (t.name == objectName)
-                {
-                    return t.gameObject;
-                }
-            }
-
-            return null;
         }
 
         private void OnDestroy()
