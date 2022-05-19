@@ -32,13 +32,5 @@ namespace Enemy
         {
             OnEnemyDestroy?.Invoke();
         }
-
-        private void ApplyForceToHitPoint(GameObject enemy, Vector2 point)
-        {
-            if (enemy.GetComponent<Rigidbody2D>())
-            {
-                enemy.GetComponent<Rigidbody2D>().AddForceAtPosition(point.normalized * 1000, point);
-            }
-        }
     }
 }

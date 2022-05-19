@@ -3,6 +3,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using System;
+using static Core.Utils;
 
 namespace Environment
 {

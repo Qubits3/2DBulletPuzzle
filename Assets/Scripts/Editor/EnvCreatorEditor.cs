@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
-using Environment;
 using UnityEditor;
 #endif
+using Environment;
 using UnityEngine;
 
 namespace Editor

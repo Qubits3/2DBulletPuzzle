@@ -7,6 +7,7 @@ namespace Enemy
     {
         private Enemy _enemy;
         private ParticleSystem bleedingParticleSystem;
+        RaycastHit2D hit;
 
         private void Awake()
         {
@@ -14,7 +15,7 @@ namespace Enemy
             _enemy = parent.FindGameObjectInParentWithTag("Enemy").GetComponent<Enemy>();
             bleedingParticleSystem = parent.FindGameObjectInParent("Bleeding").GetComponent<ParticleSystem>();
         }
-
+        
         private void OnEnable()
         {
             PredictBulletHitPoint();
@@ -24,7 +25,7 @@ namespace Enemy
         {
             Vector2 bulletPos = _enemy.bulletPos;
 
-            var hit = Physics2D.BoxCast(bulletPos, new Vector2(0.1f, 0.1f), 0f, Vector2.zero, 0.1f,
+            hit = Physics2D.BoxCast(bulletPos, new Vector2(0.1f, 0.1f), 0f, Vector2.zero, 0.1f,
                 LayerMask.GetMask("IgnoreBullet"));
 
             if (hit.collider)
@@ -44,6 +45,7 @@ namespace Enemy
         private void ApplyBleeding(GameObject shootedBodyPart,Vector2 hitPos)
         {
             bleedingParticleSystem.transform.position = hitPos;
+            bleedingParticleSystem.transform.rotation = Quaternion.FromToRotation(transform.forward, hit.normal) * transform.rotation;
             bleedingParticleSystem.transform.SetParent(shootedBodyPart.transform);
             bleedingParticleSystem.Play();
         }

@@ -29,13 +29,13 @@ public class CloudCreator : MonoBehaviour, ICloudManager
 
     private void SpawnCloud(int count)
     {
-        SpawnPrefab(propReferences.GetRandomCloud, -_spawnRegion / 2, _spawnRegion / 2, count);
+        SpawnPrefab(propReferences.GetRandomCloud, 0, _spawnRegion, count);
     }
 
 
     private void SpawnCloudRandomly(int count)
     {
-        SpawnPrefabAtRandomPosition(propReferences.GetRandomCloud, -_spawnRegion / 2, _spawnRegion / 2, count);
+        SpawnPrefabAtRandomPosition(propReferences.GetRandomCloud, 0, _spawnRegion, count);
     }
 
     private GameObject[] SpawnPrefabAtRandomPosition(Func<GameObject> randomPropFunction, float minPos, float maxPos, int spawnCount)
