@@ -5,6 +5,8 @@ namespace Player
 {
     public class PlayerLife : MonoBehaviour
     {
+        public Vector3 bulletPos;
+
         private GameObject _ragdollPlayer;
         private GameObject _player;
         private GameManager _gameManager;
@@ -21,6 +23,7 @@ namespace Player
             {
                 if (_gameManager)
                 {
+                    bulletPos = collision.transform.position;
                     _player.SetActive(false);
                     _ragdollPlayer.SetActive(true);
                     _gameManager.FailedLevel();

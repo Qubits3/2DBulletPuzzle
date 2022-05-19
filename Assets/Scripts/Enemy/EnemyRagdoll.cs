@@ -6,11 +6,13 @@ namespace Enemy
     public class EnemyRagdoll : MonoBehaviour
     {
         private Enemy _enemy;
+        private ParticleSystem bleedingParticleSystem;
 
         private void Awake()
         {
             GameObject parent = transform.parent.gameObject;
             _enemy = parent.FindGameObjectInParentWithTag("Enemy").GetComponent<Enemy>();
+            bleedingParticleSystem = parent.FindGameObjectInParent("Bleeding").GetComponent<ParticleSystem>();
         }
 
         private void OnEnable()
@@ -28,6 +30,7 @@ namespace Enemy
             if (hit.collider)
             {
                 ApplyForceToHitPoint(hit.collider.gameObject.GetComponent<Rigidbody2D>(), bulletPos);
+                ApplyBleeding(hit.collider.gameObject ,bulletPos);
             }
         }
         
@@ -37,6 +40,12 @@ namespace Enemy
             {
                 rb.AddForceAtPosition(point.normalized * Random.Range(300,600), point);
             }
+        }
+        private void ApplyBleeding(GameObject shootedBodyPart,Vector2 hitPos)
+        {
+            bleedingParticleSystem.transform.position = hitPos;
+            bleedingParticleSystem.transform.SetParent(shootedBodyPart.transform);
+            bleedingParticleSystem.Play();
         }
     }
 }

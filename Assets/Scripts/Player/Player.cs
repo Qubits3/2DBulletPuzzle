@@ -9,7 +9,6 @@ namespace Player
         private Camera _camera;
         private GameManager _gameManager;
 
-        
         private void Awake()
         {
             _camera = Camera.main;
