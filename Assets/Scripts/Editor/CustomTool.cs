@@ -20,7 +20,7 @@ namespace Editor
             if (GUILayout.Button("Open Save File Path"))
             {
                 EditorUtility.RevealInFinder(
-                    $"C:\\Users\\{Environment.UserName}\\AppData\\LocalLow\\DefaultCompany\\Bullet Puzzle 2D\\");
+                    $"C:\\Users\\{System.Environment.UserName}\\AppData\\LocalLow\\DefaultCompany\\Bullet Puzzle 2D\\");
             }
 
             SingleScene();
